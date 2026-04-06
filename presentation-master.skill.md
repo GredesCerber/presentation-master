@@ -21,7 +21,7 @@ aliases:
 
 This includes: slide titles, bullet points, speaker notes, transitions, and status messages.
 
-**File naming:** Use transliteration for non-Latin scripts (e.g., "Машинное обучение" → "Mashinnoe_obuchenie")
+**File naming:** Use original script for file names (e.g., "Машинное_обучение.html" for Russian topics)
 
 ---
 
@@ -345,15 +345,16 @@ Mix these types throughout the presentation:
 
 ## STEP 9: File Naming Convention
 
-**Presentation file:** `{Topic}.html`
-- Examples: `Kriticheskoe_myshlenie.html`, `Machine_Learning_Basics.html`
-- Use underscores for spaces, CamelCase or snake_case
+**Presentation file:** `{Тема}.html`
+- Examples: `Критическое_мышление.html`, `Машинное_обучение.html`
+- Use underscores for spaces
 - Keep name 2-4 words max
+- Use original language (Russian = Russian letters)
 
-**Speaker notes file:** `Speech_Notes_{Topic}.html`
-- Examples: `Speech_Notes_Kriticheskoe_myshlenie.html`
+**Speaker notes file:** `Речь_{Тема}.html`
+- Examples: `Речь_Критическое_мышление.html`
 - Use EXACT same topic name as presentation file
-- Prefix is consistent: `Speech_Notes_`
+- Prefix is consistent: `Речь_`
 
 **Both files saved in same directory where user is working**
 
@@ -522,8 +523,8 @@ After generating, verify BEFORE confirming complete:
 - Slide 16: Thank You
 
 **Generated files:**
-1. `Kriticheskoe_myshlenie.html` — 16 interactive slides, navigation, responsive
-2. `Speech_Notes_Kriticheskoe_myshlenie.html` — Full speech notes (16 sections)
+1. `Критическое_мышление.html` — 16 interactive slides, navigation, responsive
+2. `Речь_Критическое_мышление.html` — Full speech notes (16 sections)
 
 **No labels like "Владислав начинает" or "Мария берёт слово"** — just smooth topic transitions in the presentation flow & natural conversational flow in speech text.
 

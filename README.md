@@ -1,334 +1,157 @@
-# 🎓 Presentation Master System — Self-Improving Setup
+# 🎓 Presentation Master
 
-**A complete presentation generation system that learns and improves automatically.**
-
----
-
-## 📦 What You Have
-
-### Core Files
-- ✅ `presentation-master.skill.md` — Detailed 12-step workflow (in VS Code prompts)
-- ✅ `presentation-master.agent.md` — Main generation agent (in VS Code prompts)
-- ✅ `self-improvement.agent.md` — Improvement analyzer (in VS Code prompts)
-- ✅ `.github/copilot-instructions.md` — System hub (explains everything)
-- ✅ `.github/AGENTS.md` — Agent orchestration
-- ✅ `.github/improvement-log.md` — Audit trail
-- ✅ GitHub repo `presentation-master` — Backup (private)
-
-**All located in**: `C:\Users\GredesCerber\AppData\Roaming\Code\User\prompts\`
+**Система генерации HTML-презентаций с речевыми заметками**
 
 ---
 
-## 🚀 Quick Start
+## 📦 Что это?
 
-### Step 1: Open VS Code Copilot Chat
+Presentation Master — агент для VS Code Copilot, который создаёт готовые к использованию презентации:
 
-### Step 2: Select Agent (Optional but Recommended)
+- **Входные данные**: тема + имена авторов
+- **Выходные данные**: 2 HTML-файла (презентация + речевые заметки)
+- **Слайдов**: 14-22 (автоматически рассчитывается по числу авторов)
+- **Зависимости**: нет (всё встроено в HTML)
 
-Click agent dropdown → Select **"presentation-master"**
+---
 
-Or just type in chat:
+## 🚀 Быстрый старт
+
+### Установка
+
+```powershell
+# Клонируйте репозиторий
+git clone https://github.com/YourName/presentation-master
+
+# Запустите установщик
+cd presentation-master
+.\install.ps1
+```
+
+### Использование
+
+Откройте VS Code → Copilot Chat → напишите:
+
 ```
 Создай презентацию про машинное обучение, авторы: Иван и Мария
 ```
 
-### Step 3: System Generates
-
-- 🎬 Presentation HTML created (14-22 slides)
-- 📝 Speaker notes HTML created
-- ✅ Quality checklist runs
-- 📊 Files saved to your workspace
-
-### Step 4: Self-Improvement (Optional)
-
-System asks: **"Check for system improvements? (Y/n)"**
-
-Choose:
-- **Y** → Auto-analysis → Suggests improvements
-- **N** → Skip → Just present the files
+Результат:
+- `Машинное_обучение.html` — интерактивная презентация (15 слайдов)
+- `Речь_Машинное_обучение.html` — полный текст выступления
 
 ---
 
-## 🎯 How Self-Improvement Works
-
-### If You Choose "Yes"
+## 📁 Структура проекта
 
 ```
-System analyzes:
-  ✓ Was presentation generated correctly?
-  ✓ Any patterns to improve?
-  ✓ New edge cases discovered?
-  ✓ Better examples available?
-
-If improvements found:
-  Type A (quick): "Approve now?" 
-              → YES: Applied + Git commit ✓
-              → NO: Skipped
-
-  Type B (feature): "Review proposed change first?"
-              → YES: Shows diff → You decide
-              → NO: Skipped
-
-  Type C (core): "⚠️ High-risk. Test in dev first?"
-              → YES: Dev branch testing
-              → NO: Skipped
-```
-
-### What Gets Better Over Time
-
-```
-After 10 presentations:
-  • Skill improved 3-5 times
-  • New examples added
-  • Edge cases handled
-  • Better templates discovered
-
-After 20 presentations:
-  • Whole workflow optimized
-  • Development patterns emerged
-  • New slide types created
-  • System version now v1.2.0+
+presentation-master/
+├── presentation-master.agent.md   # Основной агент
+├── presentation-master.skill.md   # Детальный воркфлоу (12 шагов)
+├── install.ps1                    # Установщик
+├── examples/                      # Примеры готовых презентаций
+└── .github/
+    ├── copilot-instructions.md    # Системные инструкции
+    └── AGENTS.md                  # Декларация агентов
 ```
 
 ---
 
-## 📋 Quick Commands
+## 🎯 Возможности
+
+### Типы слайдов (автоматически подбираются)
+
+| Тип | Описание | Когда используется |
+|-----|----------|-------------------|
+| **Title** | Заголовок + авторы | Первый и последний слайд |
+| **Content** | Заголовок + буллеты | Основной контент |
+| **Two-Column** | Сравнение/контраст | Плюсы/минусы, до/после |
+| **Card Grid** | 4-6 карточек | Этапы, категории, примеры |
+| **Section Divider** | Переходный слайд | Между разделами |
+| **Example** | Кейс/пример | Практические иллюстрации |
+
+### Цветовые палитры
+
+- **Academic** (зелёный/бирюзовый) — для учебных презентаций
+- **Modern** (фиолетовый/синий) — для технических тем
+- **Professional** (тёмно-синий/золотой) — для бизнеса
+
+---
+
+## 📋 Примеры команд
 
 ```
-/presentation "Topic" authors:"Name1, Name2"
-  → Generate new presentation
+# Базовая презентация
+Создай презентацию про искусственный интеллект, авторы: Анна и Борис
 
-/check improvements
-  → Manual improvement analysis
+# На английском
+Create presentation about climate change, authors: John and Mary
 
-/review improvements
-  → See improvement history
+# Для одного автора
+Презентация про историю интернета, автор: Сергей
 
-/status
-  → System health check
-
-/sync git
-  → Push changes to GitHub repo
+# Для группы
+Создай презентацию про кибербезопасность, авторы: Иван, Мария, Пётр
 ```
 
 ---
 
-## 🔗 File Relationships
+## 🔧 Настройка
 
+Файлы устанавливаются в:
 ```
-copilot-instructions.md (READ THIS FIRST)
-  ├─ Explains entire system
-  ├─ Shows how parts connect
-  └─ Links to other files
+%APPDATA%\Code\User\prompts\
+```
 
-AGENTS.md (Agent orchestration)
-  ├─ Declares presentation-master agent
-  ├─ Declares self-improvement agent
-  └─ Shows how they work together
+Для ручной установки скопируйте туда:
+- `presentation-master.agent.md`
+- `presentation-master.skill.md`
+- `.github/` (папку целиком)
 
-presentation-master.skill.md (Detailed workflow)
-  ├─ 12-step detailed process
-  ├─ Read by main agent
-  └─ Updated by self-improvement
+---
 
-presentation-master.agent.md (Main agent)
-  ├─ Reads skill.md
-  ├─ Generates presentations
-  └─ Updates via self-improvement
+## ✅ Требования
 
-self-improvement.agent.md (Improvement agent)
-  ├─ Analyzes presentations
-  ├─ Suggests improvements
-  └─ (doesn't modify directly)
+- VS Code
+- GitHub Copilot (расширение)
+- Copilot Chat
 
-improvement-log.md (History)
-  ├─ Tracks all improvements
-  ├─ Shows what changed
-  └─ Git commit hashes
+---
 
-GitHub repo (Backup)
-  ├─ All files versioned
-  ├─ History preserved
-  └─ Recovery after reinstall
+## 📖 Документация
+
+| Файл | Содержание |
+|------|-----------|
+| `presentation-master.skill.md` | Полный воркфлоу генерации (12 шагов) |
+| `presentation-master.agent.md` | Настройки агента |
+| `.github/copilot-instructions.md` | Системные инструкции |
+| `examples/` | Готовые примеры презентаций |
+
+---
+
+## 🐛 Устранение проблем
+
+**Агент не появляется в списке?**
+```
+Shift+Ctrl+P → "Reload Window"
+```
+
+**Файлы не создаются?**
+- Проверьте, что GitHub Copilot активен
+- Убедитесь, что файлы в `%APPDATA%\Code\User\prompts\`
+
+**Нужно удалить и переустановить?**
+```powershell
+.\install.ps1 -Force
 ```
 
 ---
 
-## 🎓 Typical Workflow
+## 📄 Лицензия
 
-### Session 1: Basic Use
-
-```
-User: "Presentation про компьютерное зрение, 2 авторов"
-  ↓
-Agent generates
-  ↓
-You present
-  ↓
-Self-improvement offers 1-2 Type A suggestions
-  ↓
-You approve
-  ↓
-Files update, v1.0.1 created
-```
-
-### Session 5-10: Learning Phase
-
-```
-After 3-5 more presentations
-  ↓
-Pattern emerges (e.g., "Users want 18-20 slides")
-  ↓
-self-improvement suggests new rule
-  ↓
-skill.md updated
-  ↓
-Future presentations auto-benefit
-```
-
-### Session 20+: Optimized
-
-```
-System now has:
-  • Better templates
-  • More examples
-  • Refined rules
-  • Fewer edge cases
-  • Optimized workflows
-  ↓
-Version now v1.2.5+
-```
+MIT
 
 ---
 
-## ✅ Safety Guarantees
-
-### What CANNOT Change (Locked)
-- 14-22 slide rule
-- Dual-file output
-- Fact-checking protocol
-- Quality checklists
-
-### What CAN Improve
-- Examples & templates
-- Design options
-- Clarifications
-- New slide types
-- Color palettes
-
----
-
-## 🔄 Improvement Categories
-
-| Type | Risk | Example | Auto-Approve? |
-|------|------|---------|---------------|
-| **A** | Low | "Add better example" | Ask user (usually yes) |
-| **B** | Medium | "New slide template" | Requires review |
-| **C** | High | "Change core logic" | Explicit approval required |
-
----
-
-## 🐛 Troubleshooting
-
-### "System not suggesting improvements"
-→ Check if auto-suggest is ON  
-→ Run `/check improvements` manually
-
-### "Improvement didn't apply"
-→ Check `improvement-log.md`  
-→ Verify Git is connected
-
-### "Want to undo a change"
-→ Find in improvement-log.md  
-→ Get Git commit hash  
-→ Run `git revert <hash>`
-
----
-
-## 💾 After Windows Reinstall
-
-```
-1. Reinstall VS Code
-2. Install GitHub Copilot extension
-3. Clone repo:
-   git clone https://github.com/YourName/presentation-master
-4. Copy files:
-   presentation-master.skill.md → .../Code/User/prompts/
-   presentation-master.agent.md → .../Code/User/prompts/
-   self-improvement.agent.md → .../Code/User/prompts/
-   .github folder → .../Code/User/prompts/
-5. Ready to go! All history preserved.
-```
-
----
-
-## 🎯 Next Steps
-
-### Right Now
-1. ✅ Read `.github/copilot-instructions.md` (full system overview)
-2. ✅ Review `AGENTS.md` (how agents work)
-3. ✅ Try generating a presentation
-
-### After First Presentation
-1. ✅ Try self-improvement check
-2. ✅ Approve a Type A suggestion
-3. ✅ See system update
-
-### After 5-10 Presentations
-1. ✅ Suggest new improvement ideas
-2. ✅ Check improvement-log.md
-3. ✅ Notice system getting better
-
----
-
-## 📊 System Status
-
-```
-✅ Initialization: COMPLETE
-✅ Main agent: READY
-✅ Improvement agent: READY
-✅ Workflows: CONFIGURED
-✅ Safety guardrails: ACTIVE
-✅ Git integration: CONNECTED
-
-Ready to generate presentations! 🚀
-```
-
----
-
-## 🎓 How to Learn More
-
-| Topic | File |
-|-------|------|
-| System overview | `.github/copilot-instructions.md` |
-| Agent details | `.github/AGENTS.md` |
-| Generation workflow | `presentation-master.skill.md` |
-| Improvement history | `.github/improvement-log.md` |
-| Main agent code | `presentation-master.agent.md` |
-| Improvement agent code | `self-improvement.agent.md` |
-
----
-
-## 🚀 You're Ready!
-
-**The system is:** 
-- ✅ Complete
-- ✅ Self-improving
-- ✅ Version-controlled
-- ✅ Safe (guardrails in place)
-- ✅ Learning-ready
-
-**Start using it now:**
-
-1. Open VS Code Copilot Chat
-2. Type: `Создай презентацию про [topic], авторы: [names]`
-3. Watch it generate
-4. Let it learn
-
-**That's it!**
-
----
-
-**System Version**: 1.0.0  
-**Status**: Production Ready  
-**Updated**: 2026-04-07
+**Версия**: 1.1.0  
+**Обновлено**: Апрель 2026

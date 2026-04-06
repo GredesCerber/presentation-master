@@ -15,8 +15,8 @@ Write-Host "🚀 Presentation Master System Installation" -ForegroundColor Cyan
 Write-Host "=============================================" -ForegroundColor Cyan
 Write-Host ""
 
-# Step 1: Verify VS Code is installed
-Write-Host "[1/4] Checking VS Code installation..." -ForegroundColor Yellow
+# Step 1: Verify VS Code and GitHub Copilot are installed
+Write-Host "[1/4] Checking VS Code and Copilot installation..." -ForegroundColor Yellow
 $vscodePath = Get-Command code -ErrorAction SilentlyContinue
 if (-not $vscodePath) {
     Write-Host "❌ ERROR: VS Code not found in PATH" -ForegroundColor Red
@@ -24,6 +24,16 @@ if (-not $vscodePath) {
     exit 1
 }
 Write-Host "✅ VS Code found: $($vscodePath.Source)" -ForegroundColor Green
+
+# Check for GitHub Copilot extension
+$extensions = & code --list-extensions 2>$null
+$hasCopilot = $extensions | Select-String -Pattern "github.copilot" -Quiet
+if (-not $hasCopilot) {
+    Write-Host "⚠️  WARNING: GitHub Copilot extension not found" -ForegroundColor Yellow
+    Write-Host "   Install it from VS Code marketplace: GitHub Copilot" -ForegroundColor Yellow
+} else {
+    Write-Host "✅ GitHub Copilot extension found" -ForegroundColor Green
+}
 Write-Host ""
 
 # Step 2: Prepare destination folder
@@ -60,13 +70,10 @@ Write-Host "[3/4] Copying system files..." -ForegroundColor Yellow
 
 $filesToCopy = @(
     "README.md",
-    "SETUP.md", 
-    "START_HERE.md",
     "QUICK_REFERENCE.md",
     "INSTALL.md",
     "presentation-master.skill.md",
-    "presentation-master.agent.md",
-    "self-improvement.agent.md"
+    "presentation-master.agent.md"
 )
 
 $copiedCount = 0

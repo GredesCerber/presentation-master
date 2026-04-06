@@ -4,25 +4,18 @@
 
 ---
 
-## ⚡ Quick Install (3 steps)
+## ⚡ Quick Install (2 steps)
 
-### Step 1: Open PowerShell
+### Step 1: Clone & Run
 
-Press `Win + R` and type:
-```
-powershell
-```
-
-### Step 2: Run Installation Script
-
-Clone locally first:
+Open PowerShell and run:
 ```powershell
 git clone https://github.com/GredesCerber/presentation-master-skill.git
 cd presentation-master-skill
 .\install.ps1
 ```
 
-### Step 3: Reload VS Code
+### Step 2: Reload VS Code
 
 - Press `Shift + Ctrl + P`
 - Type: `Reload Window`
@@ -34,11 +27,10 @@ cd presentation-master-skill
 
 ## 📋 What the Script Does
 
-✅ **Clones** the GitHub repository
+✅ **Verifies** VS Code is installed
 ✅ **Copies** all files to `%APPDATA%\Code\User\prompts\`
 ✅ **Backs up** any existing installation
-✅ **Initializes** Git for version tracking
-✅ **Verifies** VS Code installation
+✅ **Initializes** local Git for version tracking
 ✅ **Displays** success confirmation
 
 ---
@@ -65,6 +57,7 @@ C:\Users\[YourUsername]\AppData\Roaming\Code\User\prompts\
 - `SETUP.md`
 - `START_HERE.md`
 - `QUICK_REFERENCE.md`
+- `INSTALL.md`
 - `presentation-master.skill.md`
 - `presentation-master.agent.md`
 - `self-improvement.agent.md`
@@ -119,15 +112,16 @@ C:\Users\[YourUsername]\AppData\Roaming\Code\User\prompts\
 
 To update to latest version:
 
-### Option 1: Re-run Installation Script
+### Option 1: Re-run from repo
 ```powershell
+cd presentation-master-skill
+git pull
 .\install.ps1
 ```
-Script will automatically back up your current installation.
 
-### Option 2: Pull Latest from Git
-```bash
-cd %APPDATA%\Code\User\prompts
+### Option 2: Pull in prompts folder
+```powershell
+cd $env:APPDATA\Code\User\prompts
 git pull origin main
 ```
 
@@ -164,8 +158,7 @@ Then run install script again.
    - `presentation-master.agent.md`
    - `self-improvement.agent.md`
 3. Restart VS Code completely (close and reopen)
-4. Clear VS Code cache: Delete `%APPDATA%\Code\CachedData\`
-5. Run reload: `Shift+Ctrl+P` → `Reload Window`
+4. Run reload: `Shift+Ctrl+P` → `Reload Window`
 
 ---
 
@@ -174,9 +167,22 @@ Then run install script again.
 - ✅ Script is open-source (check `install.ps1`)
 - ✅ Only copies official files from repo
 - ✅ Automatically backs up existing installations
-- ✅ Requires user confirmation if issues occur
 - ✅ No admin rights needed
 - ✅ All files stay local (no cloud upload)
+
+---
+
+## 🌍 Cross-Platform Notes
+
+### macOS / Linux
+
+The PowerShell script is Windows-specific. For other platforms:
+
+1. Clone the repository
+2. Manually copy files to the appropriate prompts folder
+3. Reload VS Code
+
+Or use PowerShell Core (pwsh) if installed.
 
 ---
 

@@ -124,7 +124,8 @@ Create presentation about climate change, authors: John and Mary
 |------|-----------|
 | `presentation-master.skill.md` | Полный воркфлоу генерации (12 шагов) |
 | `presentation-master.agent.md` | Настройки агента |
-| `.github/copilot-instructions.md` | Системные инструкции |
+| `CUSTOMIZATION.md` | Кастомизация: цвета, шрифты, типы слайдов |
+| `TROUBLESHOOTING.md` | Решение частых проблем |
 | `examples/` | Готовые примеры презентаций |
 
 ---

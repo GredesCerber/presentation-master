@@ -245,42 +245,297 @@ Mix these types throughout the presentation:
 
 ## STEP 7: Design & Styling Standards
 
-### Color Palettes (Pick ONE)
+### 🎨 Default Style: Academic (Green/Teal)
 
-**Palette A: Academic (Green/Teal)**
-- Primary: #2f8f6a (green)
-- Secondary: #0ea5e9 (teal/cyan)
-- Accent: #f0fdf4 (very light green background)
-- Dark text: #0f172a
+**По умолчанию используется Academic стиль** — тёмный фон с зелёными/бирюзовыми акцентами. Это проверенный стиль из примеров.
 
-**Palette B: Modern (Purple/Blue)**
-- Primary: #8b5cf6 (purple)
-- Secondary: #3b82f6 (bright blue)
-- Accent: #f5f3ff (very light purple background)
-- Dark text: #0f172a
+Альтернативные стили применяются **только если пользователь явно указал**:
+```
+"Создай презентацию в стиле Glassmorphism..."
+"Make presentation with Brutalist style..."
+```
 
-**Palette C: Professional (Navy/Gold)**
-- Primary: #0f172a (navy)
-- Secondary: #fbbf24 (gold/amber)
-- Accent: #fffbeb (very light yellow background)
-- Dark text: #0f172a
+### 🎯 DEFAULT STYLE: Academic (используется всегда, если не указано иное)
 
-### Typography Rules
-- Fonts: Segoe UI, Inter, or system sans-serif (NEVER serif or cursive)
-- Font size: Use `clamp()` for all sizes
+**Colors:**
+```css
+:root {
+  --bg-dark: #0f172a;
+  --bg-surface: #1e293b;
+  --text-primary: #f8fafc;
+  --text-secondary: #e2e8f0;
+  --accent-1: #2f8f6a;
+  --accent-2: #0ea5e9;
+  --accent-gradient: linear-gradient(135deg, #064e3b 0%, #065f46 50%, #047857 100%);
+  --title-gradient: linear-gradient(135deg, #a7f3d0, #6ee7b7);
+}
+```
+
+**Title slide:**
+```css
+.slide-title {
+  background: linear-gradient(135deg, #064e3b 0%, #065f46 50%, #047857 100%);
+}
+.slide-title h1 {
+  background: linear-gradient(135deg, #a7f3d0, #6ee7b7);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+```
+
+**Content slides:**
+```css
+.slide-content {
+  background: linear-gradient(180deg, #0f172a 0%, #1e293b 100%);
+}
+.slide-content h2 {
+  color: #6ee7b7;
+  border-left: 5px solid #2f8f6a;
+}
+```
+
+**Cards:**
+```css
+.card {
+  background: rgba(15, 23, 42, 0.8);
+  border: 1px solid rgba(47, 143, 106, 0.3);
+  border-radius: 12px;
+}
+```
+
+---
+
+### 🔄 Alternative Styles (только по запросу пользователя)
+
+Используются ТОЛЬКО если пользователь явно указал стиль в запросе.
+
+---
+
+### Alt Style 1: GLASSMORPHISM
+
+**Trigger:** Пользователь указал "в стиле Glassmorphism" или "glass style"
+
+**Colors:**
+```css
+:root {
+  --bg-dark: #0a0a1a;
+  --bg-surface: #0f172a;
+  --glass: rgba(255, 255, 255, 0.05);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --text-primary: #f1f5f9;
+  --text-secondary: rgba(255, 255, 255, 0.65);
+  --accent-1: #8b5cf6;
+  --accent-2: #06b6d4;
+}
+```
+
+**Background with animated orbs:**
+```css
+body::before {
+  content: '';
+  position: fixed;
+  top: -50%; left: -50%;
+  width: 200%; height: 200%;
+  background: 
+    radial-gradient(circle at 20% 30%, rgba(139, 92, 246, 0.15) 0%, transparent 40%),
+    radial-gradient(circle at 80% 70%, rgba(6, 182, 212, 0.12) 0%, transparent 40%);
+  animation: bgFloat 20s ease-in-out infinite;
+}
+```
+
+**Glass cards:**
+```css
+.glass-card {
+  background: var(--glass);
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+}
+```
+
+---
+
+### Alt Style 2: MINIMAL DARK
+
+**Trigger:** Пользователь указал "Minimal Dark" или "тёмный минималистичный"
+
+**Colors:**
+```css
+:root {
+  --bg-dark: #09090b;
+  --bg-surface: #18181b;
+  --glass: #18181b;
+  --glass-border: #27272a;
+  --text-primary: #fafafa;
+  --text-secondary: #a1a1aa;
+  --accent-1: #22c55e;
+  --accent-2: #3b82f6;
+}
+```
+
+**Clean background:**
+```css
+body {
+  background: linear-gradient(180deg, #09090b 0%, #18181b 100%);
+}
+```
+
+---
+
+### Alt Style 3: MINIMAL LIGHT
+
+**Trigger:** Пользователь указал "Minimal Light", "светлый", "белый фон"
+
+**Colors:**
+```css
+:root {
+  --bg-dark: #ffffff;
+  --bg-surface: #f4f4f5;
+  --glass: #ffffff;
+  --glass-border: #e4e4e7;
+  --text-primary: #18181b;
+  --text-secondary: #52525b;
+  --accent-1: #2563eb;
+  --accent-2: #0ea5e9;
+}
+```
+
+**White background:**
+```css
+body {
+  background: linear-gradient(180deg, #ffffff 0%, #f4f4f5 100%);
+}
+```
+
+---
+
+### Alt Style 4: GRADIENT MESH
+
+**Trigger:** Пользователь указал "Gradient Mesh", "градиент", "цветной"
+
+**Colors:**
+```css
+:root {
+  --text-primary: #ffffff;
+  --text-secondary: rgba(255,255,255,0.85);
+  --glass: rgba(0,0,0,0.2);
+  --glass-border: rgba(255,255,255,0.2);
+  --accent-1: #f472b6;
+  --accent-2: #a855f7;
+}
+```
+
+**Animated gradient:**
+```css
+body {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+  background-size: 400% 400%;
+  animation: gradientShift 15s ease infinite;
+}
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+```
+
+---
+
+### Alt Style 5: NEOMORPHISM
+
+**Trigger:** Пользователь указал "Neomorphism", "неоморфизм", "мягкие тени"
+
+**Colors:**
+```css
+:root {
+  --bg-dark: #e0e5ec;
+  --text-primary: #2d3436;
+  --text-secondary: #636e72;
+  --accent-1: #6366f1;
+  --accent-2: #8b5cf6;
+}
+```
+
+**Soft shadows:**
+```css
+.glass-card {
+  background: #e0e5ec;
+  border: none;
+  box-shadow: 8px 8px 16px #b8bec4, -8px -8px 16px #ffffff;
+}
+```
+
+---
+
+### Alt Style 6: BRUTALIST
+
+**Trigger:** Пользователь указал "Brutalist", "брутализм", "дерзкий"
+
+**Colors:**
+```css
+:root {
+  --bg-dark: #000000;
+  --text-primary: #ffffff;
+  --accent-1: #ff0000;
+  --glass: transparent;
+  --glass-border: #ff0000;
+}
+```
+
+**Bold design:**
+```css
+body { background: #000; }
+.glass-card {
+  background: transparent;
+  border: 3px solid #ff0000;
+  border-radius: 0;
+}
+h1, h2, h3 { text-transform: uppercase; font-weight: 900; }
+```
+
+---
+
+### Alt Style 7: CORPORATE
+
+**Trigger:** Пользователь указал "Corporate", "корпоративный", "бизнес стиль"
+
+**Colors:**
+```css
+:root {
+  --bg-dark: #f8fafc;
+  --bg-surface: #ffffff;
+  --glass: #ffffff;
+  --glass-border: #e2e8f0;
+  --text-primary: #1e293b;
+  --text-secondary: #475569;
+  --accent-1: #1e40af;
+  --accent-2: #3b82f6;
+}
+```
+
+**Professional look:**
+```css
+body { background: linear-gradient(180deg, #f8fafc 0%, #e2e8f0 100%); }
+.glass-card { box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+```
+
+---
+
+### Typography Rules (All Styles)
+- Fonts: `'Inter', 'Segoe UI', system-ui, sans-serif` (NEVER serif)
+- Font size: Use `clamp()` for responsive sizing
   - Heading 1: `clamp(2em, 4vw, 3.5em)`
   - Heading 2: `clamp(1.5em, 2.5vw, 2.2em)`
-  - Body text: `clamp(0.9em, 1.1vw, 1.1em)`
+  - Body text: `clamp(0.9em, 1.2vw, 1.1em)`
   - Small text: `clamp(0.75em, 0.9vw, 0.9em)`
-- Line height: 1.5 for headings, 1.6 for body
+- Line height: 1.4 for headings, 1.6 for body
 - Letter spacing: normal (0)
 
-### Component Styles
-- Card boxes: left border accent (4-6px, primary color)
-- Borders: subtle shadows only (0 4px 8px rgba(0,0,0,0.08))
-- Corners: 8-12px border-radius
-- Spacing: `gap: clamp(12px, 2vw, 24px)` between elements
-- Transitions: smooth 0.3s for hover states
+### Component Styles (All Styles)
+- Card boxes: `border-radius: 12px` (except Brutalist = 0)
+- Shadows: subtle `0 4px 12px rgba(0,0,0,0.1)`
+- Spacing: `gap: clamp(12px, 2vw, 24px)`
+- Transitions: `all 0.3s ease`
 
 ### Responsive Behavior
 - **Desktop (1200px+):** Full design, all elements visible

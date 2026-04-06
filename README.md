@@ -22,7 +22,7 @@ Presentation Master — агент для VS Code Copilot, который соз
 
 ```powershell
 # Клонируйте репозиторий
-git clone https://github.com/YourName/presentation-master
+git clone https://github.com/GredesCerber/presentation-master
 
 # Запустите установщик
 cd presentation-master
@@ -181,5 +181,10 @@ MIT
 
 ---
 
+<<<<<<< HEAD
 **Версия**: 1.3.0  
 **Обновлено**: Апрель 2026
+=======
+**Версия**: 1.1.0  
+**Обновлено**: Апрель 2026
+>>>>>>> b5ab2daf3daac616982ad5e16b2bd84e56400f8e

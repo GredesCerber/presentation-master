@@ -183,7 +183,7 @@ These rules CANNOT be modified by self-improvement:
 - Quality checklists enforced
 
 🔐 **File Conventions**
-- Naming: `{Topic}.html` + `Tekst_Vystu plemiya_{Topic}.html`
+- Naming: `{Topic}.html` + `Speech_Notes_{Topic}.html`
 - Format: Self-contained HTML (no CDN)
 - Output: In user's current directory
 

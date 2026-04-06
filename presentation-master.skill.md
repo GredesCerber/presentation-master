@@ -12,13 +12,29 @@ aliases:
 
 # Presentation Master — Complete Workflow
 
+## LANGUAGE RULE (CRITICAL)
+
+**Match the user's language in ALL output:**
+- If user writes in Russian → All content in Russian
+- If user writes in English → All content in English
+- If user writes in any language → Match that language
+
+This includes: slide titles, bullet points, speaker notes, transitions, and status messages.
+
+**File naming:** Use transliteration for non-Latin scripts (e.g., "Машинное обучение" → "Mashinnoe_obuchenie")
+
+---
+
 ## INPUT: What You'll Receive
 
 User will say something like:
+> "Create presentation about [TOPIC], authors: [NAME1], [NAME2], ..."
+
+Or in Russian:
 > "Создай презентацию про [TOPIC], авторы: [NAME1], [NAME2], ..."
 
 You MUST extract:
-1. **TOPIC** — clear subject (не просто "interessant topic")
+1. **TOPIC** — clear subject (not just "interesting topic")
 2. **AUTHORS** — list of creator names (count matters!)
 3. **CONTEXT** — academic/professional (implied from topic)
 
@@ -302,7 +318,7 @@ Mix these types throughout the presentation:
 - All fonts use `clamp()` to scale appropriately
 - No text gets hidden unless intentionally scrollable
 
-### File 2: Speaker Notes (`Tekst_Vystu plemiya_{Topic}.html`)
+### File 2: Speaker Notes (`Speech_Notes_{Topic}.html`)
 
 **Structure:**
 - Header: Topic name, authors, date, group info
@@ -334,10 +350,10 @@ Mix these types throughout the presentation:
 - Use underscores for spaces, CamelCase or snake_case
 - Keep name 2-4 words max
 
-**Speaker notes file:** `Tekst_Vystu plemiya_{Topic}.html`
-- Examples: `Tekst_Vystu plemiya_Kriticheskoe_myshlenie.html`
+**Speaker notes file:** `Speech_Notes_{Topic}.html`
+- Examples: `Speech_Notes_Kriticheskoe_myshlenie.html`
 - Use EXACT same topic name as presentation file
-- Prefix is consistent: `Tekst_Vystu plemiya_`
+- Prefix is consistent: `Speech_Notes_`
 
 **Both files saved in same directory where user is working**
 
@@ -403,7 +419,7 @@ After generating, verify BEFORE confirming complete:
 
 **File structure:**
 - ✅ File 1 exists: `{Topic}.html` (presentation)
-- ✅ File 2 exists: `Tekst_Vystu plemiya_{Topic}.html` (speech notes)
+- ✅ File 2 exists: `Speech_Notes_{Topic}.html` (speech notes)
 - ✅ Both files in correct directory
 - ✅ Both files have correct naming (matching topic)
 
@@ -507,7 +523,7 @@ After generating, verify BEFORE confirming complete:
 
 **Generated files:**
 1. `Kriticheskoe_myshlenie.html` — 16 interactive slides, navigation, responsive
-2. `Tekst_Vystu plemiya_Kriticheskoe_myshlenie.html` — Full speech notes (16 sections)
+2. `Speech_Notes_Kriticheskoe_myshlenie.html` — Full speech notes (16 sections)
 
 **No labels like "Владислав начинает" or "Мария берёт слово"** — just smooth topic transitions in the presentation flow & natural conversational flow in speech text.
 

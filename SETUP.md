@@ -64,7 +64,7 @@ Then press Enter.
 
 Generated files:
   • искусственный интеллект.html (presentation - 16 slides)
-  • Tekst_Vystu plemiya_искусственный интеллект.html (notes)
+  • Speech_Notes_искусственный интеллект.html (notes)
 
 Quality checks: ✓ ALL PASS
 

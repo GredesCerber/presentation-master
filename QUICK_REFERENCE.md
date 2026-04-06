@@ -31,7 +31,7 @@
 
 4. System generates (30-60 sec):
    ✓ искусственный интеллект.html (16 slides)
-   ✓ Tekst_Vystu plemiya_искусственный интеллект.html (notes)
+   ✓ Speech_Notes_искусственный интеллект.html (notes)
    ✓ Quality checks: ALL PASS ✓
 
 5. System asks: "Check for improvements? (y/n)"

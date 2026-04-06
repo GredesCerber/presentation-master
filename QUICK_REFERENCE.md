@@ -246,7 +246,7 @@ DONE! Files appear in 30-60 seconds. ✓
 
 ```
 1. Clone repo:
-   git clone https://github.com/GredesCerber/presentation-master-skill
+   git clone https://github.com/GredesCerber/presentation-master
 2. Copy all files to:
    C:\Users\GredesCerber\AppData\Roaming\Code\User\prompts\
 3. Restart VS Code

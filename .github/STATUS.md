@@ -46,8 +46,8 @@
 
 ### Method 1: Automatic (Recommended)
 ```powershell
-git clone https://github.com/GredesCerber/presentation-master-skill.git
-cd presentation-master-skill
+git clone https://github.com/GredesCerber/presentation-master.git
+cd presentation-master
 .\install.ps1
 ```
 

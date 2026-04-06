@@ -13,7 +13,7 @@
 - ✅ `.github/copilot-instructions.md` — System hub (explains everything)
 - ✅ `.github/AGENTS.md` — Agent orchestration
 - ✅ `.github/improvement-log.md` — Audit trail
-- ✅ GitHub repo `presentation-master-skill` — Backup (private)
+- ✅ GitHub repo `presentation-master` — Backup (private)
 
 **All located in**: `C:\Users\GredesCerber\AppData\Roaming\Code\User\prompts\`
 
@@ -251,7 +251,7 @@ Version now v1.2.5+
 1. Reinstall VS Code
 2. Install GitHub Copilot extension
 3. Clone repo:
-   git clone https://github.com/YourName/presentation-master-skill
+   git clone https://github.com/YourName/presentation-master
 4. Copy files:
    presentation-master.skill.md → .../Code/User/prompts/
    presentation-master.agent.md → .../Code/User/prompts/

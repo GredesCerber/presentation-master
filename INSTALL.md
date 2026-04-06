@@ -10,8 +10,8 @@
 
 Open PowerShell and run:
 ```powershell
-git clone https://github.com/GredesCerber/presentation-master-skill.git
-cd presentation-master-skill
+git clone https://github.com/GredesCerber/presentation-master.git
+cd presentation-master
 .\install.ps1
 ```
 
@@ -41,8 +41,8 @@ If you prefer to install manually:
 
 ### 1. Clone Repository
 ```bash
-git clone https://github.com/GredesCerber/presentation-master-skill.git
-cd presentation-master-skill
+git clone https://github.com/GredesCerber/presentation-master.git
+cd presentation-master
 ```
 
 ### 2. Copy Files
@@ -114,7 +114,7 @@ To update to latest version:
 
 ### Option 1: Re-run from repo
 ```powershell
-cd presentation-master-skill
+cd presentation-master
 git pull
 .\install.ps1
 ```

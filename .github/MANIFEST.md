@@ -11,7 +11,7 @@ Status: ✅ Production Ready
 ## 📁 Repository Structure
 
 ```
-presentation-master-skill/
+presentation-master/
 │
 ├── 📄 START_HERE.md           ← Entry point (read first!)
 ├── 📄 README.md               ← System overview

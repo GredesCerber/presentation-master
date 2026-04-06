@@ -26,7 +26,7 @@
 │  └─ Action: Update skill/agent → Commit to Git         │
 │                                                         │
 │  Git Integration: Version Control                       │
-│  ├─ Repo: presentation-master-skill (private)          │
+│  ├─ Repo: presentation-master (private)          │
 │  ├─ Auto-commit: When improvements approved            │
 │  ├─ Branches: main (stable) + dev (experimental)       │
 │  └─ History: All changes tracked                       │

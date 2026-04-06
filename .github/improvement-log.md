@@ -78,7 +78,7 @@ Notes: [Any relevant observations]
 4. ✅ `.github/copilot-instructions.md` — System hub & connections
 5. ✅ `.github/AGENTS.md` — Agent declarations
 6. ✅ `.github/improvement-log.md` — This file
-7. ✅ GitHub repo `presentation-master-skill` — Backup & versioning
+7. ✅ GitHub repo `presentation-master` — Backup & versioning
 
 ### Configuration
 

@@ -1,0 +1,15 @@
+# Windows
+Thumbs.db
+Desktop.ini
+
+# VS Code
+.vscode/
+
+# Generated presentations (users create these)
+*.html
+!examples/*.html
+
+# Temp files
+*.tmp
+*.bak
+*~

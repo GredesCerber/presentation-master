@@ -1,9 +1,6 @@
 # ============================================================================
 # Presentation Master — Automatic Installation Script
 # ============================================================================
-# This script deploys the presentation-master system to VS Code prompts folder
-# Usage: .\install.ps1
-# ============================================================================
 
 param(
     [string]$SourceDir = $PSScriptRoot,
@@ -11,7 +8,7 @@ param(
 )
 
 Write-Host "=============================================" -ForegroundColor Cyan
-Write-Host "🚀 Presentation Master System Installation" -ForegroundColor Cyan
+Write-Host "Presentation Master System Installation" -ForegroundColor Cyan
 Write-Host "=============================================" -ForegroundColor Cyan
 Write-Host ""
 
@@ -19,20 +16,20 @@ Write-Host ""
 Write-Host "[1/4] Checking VS Code and Copilot installation..." -ForegroundColor Yellow
 $vscodePath = Get-Command code -ErrorAction SilentlyContinue
 if (-not $vscodePath) {
-    Write-Host "❌ ERROR: VS Code not found in PATH" -ForegroundColor Red
+    Write-Host "ERROR: VS Code not found in PATH" -ForegroundColor Red
     Write-Host "Please install VS Code from https://code.visualstudio.com" -ForegroundColor Red
     exit 1
 }
-Write-Host "✅ VS Code found: $($vscodePath.Source)" -ForegroundColor Green
+Write-Host "VS Code found: $($vscodePath.Source)" -ForegroundColor Green
 
 # Check for GitHub Copilot extension
 $extensions = & code --list-extensions 2>$null
 $hasCopilot = $extensions | Select-String -Pattern "github.copilot" -Quiet
 if (-not $hasCopilot) {
-    Write-Host "⚠️  WARNING: GitHub Copilot extension not found" -ForegroundColor Yellow
-    Write-Host "   Install it from VS Code marketplace: GitHub Copilot" -ForegroundColor Yellow
+    Write-Host "WARNING: GitHub Copilot extension not found" -ForegroundColor Yellow
+    Write-Host "   Install it from VS Code marketplace" -ForegroundColor Yellow
 } else {
-    Write-Host "✅ GitHub Copilot extension found" -ForegroundColor Green
+    Write-Host "GitHub Copilot extension found" -ForegroundColor Green
 }
 Write-Host ""
 
@@ -59,19 +56,16 @@ if ((Test-Path $skillFile) -and (-not $Force)) {
         Copy-Item -Path $githubDir -Destination $backupDir -Recurse -Force
     }
     
-    Write-Host "  📦 Backed up existing installation to: $backupDir" -ForegroundColor Cyan
+    Write-Host "  Backed up existing installation to: $backupDir" -ForegroundColor Cyan
 }
 
-Write-Host "✅ Installation directory ready: $promptsDir" -ForegroundColor Green
+Write-Host "Installation directory ready: $promptsDir" -ForegroundColor Green
 Write-Host ""
 
 # Step 3: Copy files
 Write-Host "[3/4] Copying system files..." -ForegroundColor Yellow
 
 $filesToCopy = @(
-    "README.md",
-    "QUICK_REFERENCE.md",
-    "INSTALL.md",
     "presentation-master.skill.md",
     "presentation-master.agent.md"
 )
@@ -84,9 +78,9 @@ foreach ($file in $filesToCopy) {
     if (Test-Path $source) {
         Copy-Item -Path $source -Destination $dest -Force
         $copiedCount++
-        Write-Host "  ✓ $file" -ForegroundColor Gray
+        Write-Host "  + $file" -ForegroundColor Gray
     } else {
-        Write-Host "  ⚠ Not found: $file" -ForegroundColor Yellow
+        Write-Host "  - Not found: $file" -ForegroundColor Yellow
     }
 }
 
@@ -102,11 +96,11 @@ if (Test-Path $githubSource) {
     Get-ChildItem -Path $githubSource -File | ForEach-Object {
         Copy-Item -Path $_.FullName -Destination $githubDest -Force
         $copiedCount++
-        Write-Host "  ✓ .github/$($_.Name)" -ForegroundColor Gray
+        Write-Host "  + .github/$($_.Name)" -ForegroundColor Gray
     }
 }
 
-Write-Host "✅ Copied $copiedCount files successfully" -ForegroundColor Green
+Write-Host "Copied $copiedCount files successfully" -ForegroundColor Green
 Write-Host ""
 
 # Step 4: Initialize Git tracking (optional)
@@ -119,32 +113,31 @@ if (-not (Test-Path $gitDir)) {
         git add -A 2>&1 | Out-Null
         git commit -m "Initial installation of presentation-master system" --quiet 2>&1 | Out-Null
         Pop-Location
-        Write-Host "✅ Git repository initialized for version tracking" -ForegroundColor Green
+        Write-Host "Git repository initialized for version tracking" -ForegroundColor Green
     } catch {
-        Write-Host "ℹ️  Git setup skipped (optional)" -ForegroundColor Cyan
+        Write-Host "Git setup skipped (optional)" -ForegroundColor Cyan
     }
 } else {
-    Write-Host "✅ Git repository already exists" -ForegroundColor Green
+    Write-Host "Git repository already exists" -ForegroundColor Green
 }
 Write-Host ""
 
 # Success message
 Write-Host "=============================================" -ForegroundColor Green
-Write-Host "✅ Installation Complete!" -ForegroundColor Green
+Write-Host "Installation Complete!" -ForegroundColor Green
 Write-Host "=============================================" -ForegroundColor Green
 Write-Host ""
-Write-Host "📍 Files installed to:" -ForegroundColor Cyan
+Write-Host "Files installed to:" -ForegroundColor Cyan
 Write-Host "   $promptsDir" -ForegroundColor Gray
 Write-Host ""
-Write-Host "🚀 Next steps:" -ForegroundColor Cyan
-Write-Host "   1. Reload VS Code: Shift+Ctrl+P → 'Reload Window'" -ForegroundColor Gray
+Write-Host "Next steps:" -ForegroundColor Cyan
+Write-Host "   1. Reload VS Code: Shift+Ctrl+P then Reload Window" -ForegroundColor Gray
 Write-Host "   2. Open Copilot Chat: Ctrl+Shift+I" -ForegroundColor Gray
-Write-Host "   3. Look for 'presentation-master' in agent dropdown" -ForegroundColor Gray
+Write-Host "   3. Look for presentation-master in agent dropdown" -ForegroundColor Gray
 Write-Host ""
-Write-Host "📖 Documentation:" -ForegroundColor Cyan
-Write-Host "   Start with: START_HERE.md" -ForegroundColor Gray
+Write-Host "Documentation: See README.md" -ForegroundColor Cyan
 Write-Host ""
-Write-Host "Happy presenting! 🎉" -ForegroundColor Green
+Write-Host "Happy presenting!" -ForegroundColor Green
 Write-Host ""
 
 # Ask if user wants to open VS Code

@@ -18,20 +18,80 @@ Presentation Master — агент для VS Code Copilot, который соз
 
 ## 🚀 Быстрый старт
 
+### Требования
+
+- **VS Code** 1.80+ — скачать с [code.visualstudio.com](https://code.visualstudio.com)
+- **GitHub Copilot** расширение — установить из VS Code Marketplace
+- **Git** (опционально) — для версионирования
+
 ### Установка
 
+#### Вариант 1: Прямое клонирование + запуск (рекомендуется)
+
 ```powershell
-# Клонируйте репозиторий
+# Перейди в папку, где хочешь хранить проект
+cd "C:\Users\YourName\Desktop"
+
+# Клонируй репозиторий
 git clone https://github.com/GredesCerber/presentation-master
 
-# Запустите установщик
+# Перейди в папку проекта
 cd presentation-master
+
+# Запусти установщик (с обходом защиты PowerShell)
+powershell -ExecutionPolicy Bypass -File .\install.ps1
+```
+
+**Если на последнем шаге ошибка "ExecutionPolicy":**
+```powershell
+# Разреши скрипты для твоего пользователя (один раз)
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+
+# Теперь можешь запускать
 .\install.ps1
 ```
 
+**Что делает установщик:**
+1. ✅ Проверяет VS Code и GitHub Copilot
+2. ✅ Копирует файлы агента в: `%APPDATA%\Code\User\prompts\`
+3. ✅ Создаёт резервную копию старых файлов (если были)
+4. ✅ Инициализирует git-репозиторий для версионирования
+
+#### Вариант 2: Ручная установка
+
+Если скрипт не работает, просто скопируй файлы вручную:
+
+```
+Копируемые файлы:
+├── presentation-master.agent.md   → %APPDATA%\Code\User\prompts\
+├── presentation-master.skill.md   → %APPDATA%\Code\User\prompts\
+└── .github/
+    ├── AGENTS.md                  → %APPDATA%\Code\User\prompts\.github\
+    └── copilot-instructions.md    → %APPDATA%\Code\User\prompts\.github\
+```
+
+**На Windows:**
+1. Нажми `Win+R`, напиши `%APPDATA%\Code\User\prompts` и Enter
+2. Скопируй туда файлы из проекта
+
+### После установки
+
+1. **Перезагрузи VS Code:**
+   ```
+   Shift+Ctrl+P → "Reload Window"
+   ```
+
+2. **Открой Copilot Chat:**
+   ```
+   Ctrl+Shift+I (или иконка Copilot в боковой панели)
+   ```
+
+3. **Выбери агент `presentation-master`**
+   - Увидишь его в выпадающем меню с иконкой
+
 ### Использование
 
-Откройте VS Code → Copilot Chat → выберите агент `presentation-master` или напишите:
+Напиши в Copilot Chat:
 
 ```
 Создай презентацию про машинное обучение, авторы: Иван и Мария
@@ -42,6 +102,37 @@ cd presentation-master
 - `Речь Машинное обучение.html` — полный текст выступления
 
 **Имена файлов:** на языке запроса, с пробелами (не подчёркиваниями)
+
+### Где найти созданные файлы?
+
+Файлы создаются в той папке, которую открыл в VS Code. Например:
+
+```
+Мой проект/
+├── Машинное обучение.html
+├── Речь Машинное обучение.html
+└── (другие файлы твоего проекта)
+```
+
+Просто открой `.html` файл в браузере — готово!
+
+---
+
+## Проблемы?
+
+**❌ "ExecutionPolicy отключено"**
+```powershell
+powershell -ExecutionPolicy Bypass -File .\install.ps1
+```
+
+**❌ "Агент не появляется в меню Copilot"**
+1. Перезагрузи VS Code: `Shift+Ctrl+P` → `Reload Window`
+2. Проверь, что установлены файлы в: `%APPDATA%\Code\User\prompts\`
+
+**❌ "Файлы не создаются, а выводятся в чат"**
+- Это ошибка старой версии. Переустанови: `.\install.ps1 -Force`
+
+Подробнее см. [TROUBLESHOOTING.md](TROUBLESHOOTING.md)
 
 ---
 

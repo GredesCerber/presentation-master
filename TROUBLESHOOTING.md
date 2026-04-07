@@ -215,4 +215,4 @@ git remote set-url origin https://github.com/USERNAME/presentation-master.git
 
 ---
 
-**Версия**: 1.3.0
+**Version**: 1.4.0

@@ -42,24 +42,54 @@ You MUST extract:
 
 ## STEP 1: Calculate Total Slides
 
-**Rule: 3-5 slides per creator (guideline, not strict)**
+### IMPORTANT: Minimum is ALWAYS 14 slides (regardless of author count)
 
-| Authors | Min Slides | Target | Max Slides |
-|---------|-----------|--------|-----------|
-| 1 | 10 | 12-14 | 16 |
-| 2 | 10 | 14-16 | 18 |
-| 3 | 12 | 16-18 | 20 |
-| 4+ | 14 | 18-20 | 22 |
+The "per author" guideline is for CONTENT distribution, NOT total count.
 
-**Why this matters:**
-- Too few slides = rushed, feels incomplete
-- Too many slides = audience loses focus
-- Sweet spot = 14-20 slides for group presentation
+**Total slide count formula:**
+```
+TOTAL = FIXED_SLIDES + CONTENT_SLIDES
 
-**Application:**
-- 1 author + complex topic → 14-16 slides
-- 2 authors + medium topic → 15-18 slides
-- 3+ authors + well-scoped topic → 16-20 slides
+Where:
+- FIXED_SLIDES = 4 (Title + Overview + Summary + Thank You)
+- CONTENT_SLIDES = 10-18 (depends on topic complexity)
+
+MINIMUM: 14 slides (no exceptions)
+MAXIMUM: 22 slides (to avoid audience fatigue)
+```
+
+### Slide Count by Author Count
+
+| Authors | Min | Target | Max | Content Slides per Author |
+|---------|-----|--------|-----|---------------------------|
+| 1       | 14  | 14-16  | 18  | 10-14 slides              |
+| 2       | 14  | 16-18  | 20  | 5-8 slides each           |
+| 3       | 16  | 18-20  | 22  | 4-6 slides each           |
+| 4+      | 18  | 20-22  | 22  | 3-5 slides each           |
+
+### How to Apply This
+
+**Example 1: Single author**
+- 1 author → still need 14+ slides minimum
+- Author covers ALL content slides (10-14 content + 4 fixed = 14-18 total)
+- Topic complexity determines exact count
+
+**Example 2: Two authors**
+- 2 authors → target 16-18 slides
+- Each author's material fills ~6-7 content slides
+- Plus 4 fixed slides = 16-18 total
+
+**Example 3: Four authors**
+- 4 authors → target 20-22 slides
+- Each author's material fills ~4-5 content slides
+- Plus 4 fixed slides = 20-24, cap at 22
+
+### Key Clarification
+
+❌ WRONG thinking: "1 author × 5 slides = 5 slides total"
+✅ CORRECT thinking: "1 author = 14 slides minimum, author covers all content"
+
+The "per author" number is about WORKLOAD DISTRIBUTION in group projects, not total presentation length. A good presentation needs 14-22 slides regardless of how many people created it.
 
 ---
 
@@ -600,16 +630,31 @@ body { background: linear-gradient(180deg, #f8fafc 0%, #e2e8f0 100%); }
 
 ## STEP 9: File Naming Convention
 
-**Presentation file:** `{Тема}.html`
-- Examples: `Критическое_мышление.html`, `Машинное_обучение.html`
-- Use underscores for spaces
-- Keep name 2-4 words max
-- Use original language (Russian = Russian letters)
+**CRITICAL: File names in USER'S LANGUAGE with SPACES (no underscores/dashes)**
 
-**Speaker notes file:** `Речь_{Тема}.html`
-- Examples: `Речь_Критическое_мышление.html`
+**Presentation file:** `{Topic}.html`
+- Russian example: `Критическое мышление.html`, `Машинное обучение.html`
+- English example: `Machine Learning.html`, `Critical Thinking.html`
+- Use SPACES (not underscores or dashes)
+- Keep original language (Russian topic = Russian filename)
+- Keep name 2-4 words max
+
+**Speaker notes file:** `Речь {Topic}.html` (Russian) or `Speech {Topic}.html` (English)
+- Russian example: `Речь Критическое мышление.html`
+- English example: `Speech Machine Learning.html`
 - Use EXACT same topic name as presentation file
-- Prefix is consistent: `Речь_`
+- Prefix depends on language: `Речь ` for Russian, `Speech ` for English
+
+**Examples:**
+```
+# Russian request
+User: "Создай презентацию про машинное обучение"
+Files: "Машинное обучение.html" + "Речь Машинное обучение.html"
+
+# English request  
+User: "Create presentation about AI ethics"
+Files: "AI Ethics.html" + "Speech AI Ethics.html"
+```
 
 **Both files saved in same directory where user is working**
 
@@ -722,9 +767,13 @@ After generating, verify BEFORE confirming complete:
 
 ## STEP 12: Anti-Patterns (What NOT to Do)
 
-❌ **Content mistakes:**
-- Generate < 14 slides total (feels rushed)
+❌ **Slide count mistakes:**
+- Generate < 14 slides total (NEVER, even for 1 author)
 - Generate > 22 slides total (too long, loses focus)
+- Calculate "1 author × 5 = 5 slides" (WRONG! Min is always 14)
+- Forget fixed slides (Title, Overview, Summary, Thank You = 4 mandatory)
+
+❌ **Content mistakes:**
 - Use placeholder text ("это важно", "играет роль")
 - Show abstract claims without examples
 - Include unrelated images or decorative elements only
@@ -762,7 +811,9 @@ After generating, verify BEFORE confirming complete:
 **Extraction:**
 - Topic: Критическое мышление
 - Authors: Владислав, Мария (count = 2)
-- Target slides: 14-16 (3-5 × 2 authors)
+- Fixed slides: 4 (Title + Overview + Summary + Thank You)
+- Content slides: 12 (target for 2 authors)
+- Target slides: 16 total (4 fixed + 12 content)
 
 **Planning:**
 - Slide 1: Title (Critical Thinking, Authors, Date)
@@ -789,8 +840,8 @@ After generating, verify BEFORE confirming complete:
 
 When user says "создай презентацию про [TOPIC], авторы [NAMES]":
 
-1. **Extract & calculate:** Topic, author count, target slide count
-2. **Plan structure:** Title → Overview → Content (14-20 slides) → Summary → Thank You
+1. **Extract & calculate:** Topic, author count, MINIMUM 14 slides (always!)
+2. **Plan structure:** Title → Overview → Content (10-18 slides) → Summary → Thank You
 3. **Fill content:** Mix 6 slide types, use natural topic transitions (NOT author labels)
 4. **Fact-check:** Verify accuracy, logic, consistency, no placeholders
 5. **Generate 2 files:**
@@ -799,6 +850,448 @@ When user says "создай презентацию про [TOPIC], авторы
 6. **Verify quality:** Run checklists (file structure, content, responsiveness, facts)
 7. **Confirm complete:** Both files ready, no editing needed, presenter can use immediately
 
+**CRITICAL REMINDER:** 
+- 1 author ≠ 5 slides. 1 author = 14+ slides (they cover ALL content)
+- Minimum is ALWAYS 14 slides, maximum is 22 slides
+
 **NO questions, NO partial work, NO external dependencies.**
 
 **Output: 2 ready-to-use HTML files in user's directory.**
+
+---
+
+## CRITICAL: Full HTML Template (MUST USE THIS STRUCTURE)
+
+> ⚠️ **IMPORTANT:** This template is MANDATORY for all presentations.  
+> DO NOT modify the base CSS structure. Content must fit on screen with minimal/no scroll.
+
+### Complete HTML Structure
+
+```html
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{TOPIC}</title>
+    <style>
+        :root {
+            --primary: #1f5ea8;
+            --primary-light: #2f7bd8;
+            --success: #1e7a52;
+            --warning: #b56a1c;
+            --danger: #b63a3a;
+            --info: #0891b2;
+            --bg: #eef3f9;
+            --surface: #ffffff;
+            --text: #15233b;
+            --muted: #5c6f8a;
+            --border: #d0dce9;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: "Segoe UI", "Trebuchet MS", Verdana, sans-serif;
+            background: linear-gradient(135deg, #ebf2fb 0%, #f6f9fd 50%, #eaf2fb 100%);
+            color: var(--text);
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .deck {
+            width: 100vw;
+            height: 100vh;
+            position: relative;
+        }
+
+        .slide {
+            display: none;
+            width: 100vw;
+            height: 100vh;
+            padding: 48px 64px 80px;
+            flex-direction: column;
+            animation: fadeUp 0.4s ease;
+        }
+
+        .slide.active { display: flex; }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* TITLE SLIDE */
+        .title-slide {
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(135deg, var(--primary) 0%, #1B4A8C 100%);
+            color: white;
+            padding: 40px;
+        }
+
+        .badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        .title-slide h1 {
+            font-size: 44px;
+            font-weight: 700;
+            line-height: 1.15;
+            margin-bottom: 16px;
+            max-width: 900px;
+        }
+
+        .title-slide .subtitle {
+            font-size: 18px;
+            opacity: 0.8;
+            margin-bottom: 24px;
+        }
+
+        /* CONTENT SLIDES */
+        h2 {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 20px;
+            border-bottom: 3px solid var(--primary);
+            padding-bottom: 10px;
+        }
+
+        h3 {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 8px;
+        }
+
+        p, li {
+            font-size: 16px;
+            line-height: 1.55;
+            color: var(--text);
+            margin-bottom: 8px;
+        }
+
+        /* GRIDS */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            margin: 12px 0;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 14px;
+            margin: 12px 0;
+        }
+
+        /* CARDS */
+        .card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-left: 4px solid var(--primary);
+            border-radius: 8px;
+            padding: 14px 16px;
+        }
+
+        .card h3 { margin-top: 0; font-size: 16px; }
+        .card p { margin-bottom: 0; font-size: 14px; }
+
+        .card.success { border-left-color: var(--success); }
+        .card.warning { border-left-color: var(--warning); }
+        .card.info { border-left-color: var(--info); }
+
+        /* LISTS */
+        .list {
+            list-style: none;
+            padding: 0;
+            margin: 10px 0;
+        }
+
+        .list li {
+            padding-left: 20px;
+            margin-bottom: 8px;
+            position: relative;
+            font-size: 15px;
+        }
+
+        .list li:before {
+            content: "▪";
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        /* QUOTES */
+        .quote {
+            background: rgba(31, 94, 168, 0.08);
+            border-left: 4px solid var(--primary);
+            padding: 14px 18px;
+            font-size: 15px;
+            font-style: italic;
+            color: var(--primary);
+            margin: 12px 0;
+            border-radius: 4px;
+        }
+
+        /* NAVIGATION */
+        .slide-counter {
+            position: fixed;
+            bottom: 18px;
+            left: 18px;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--muted);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        .nav {
+            position: fixed;
+            bottom: 18px;
+            right: 18px;
+            display: flex;
+            gap: 8px;
+        }
+
+        .nav button {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+
+        .nav button:hover {
+            background: var(--primary-light);
+        }
+
+        .nav button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 1024px) {
+            .slide { padding: 36px 40px 70px; }
+            .title-slide h1 { font-size: 34px; }
+            h2 { font-size: 24px; }
+            .grid-2, .grid-3 { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 600px) {
+            .slide { padding: 24px 20px 60px; }
+            .title-slide h1 { font-size: 26px; }
+            h2 { font-size: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="deck">
+
+    <!-- SLIDE 1: TITLE -->
+    <!-- NOTE: Content below is in Russian as EXAMPLE. Generate in USER'S LANGUAGE -->
+    <section class="slide active title-slide">
+        <div class="badge">Презентация</div>
+        <h1>{TOPIC}</h1>
+        <p class="subtitle">{SUBTITLE}</p>
+        <p style="margin-top: 30px; opacity: 0.7; font-size: 14px;">Выполнили: {AUTHORS}</p>
+    </section>
+
+    <!-- SLIDE 2: TABLE OF CONTENTS -->
+    <section class="slide">
+        <h2>Содержание</h2>
+        <ul class="list">
+            <li>Введение и актуальность</li>
+            <li>Основные понятия</li>
+            <li>Ключевые аспекты</li>
+            <li>Практическое применение</li>
+            <li>Выводы</li>
+        </ul>
+    </section>
+
+    <!-- SLIDES 3-N: CONTENT -->
+    <section class="slide">
+        <h2>{SLIDE_TITLE}</h2>
+        <div class="grid-2">
+            <div class="card">
+                <h3>🎯 Подзаголовок</h3>
+                <p>Краткий текст (2-3 строки максимум)</p>
+            </div>
+            <div class="card success">
+                <h3>✅ Подзаголовок</h3>
+                <p>Краткий текст</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- LAST SLIDE: THANK YOU -->
+    <section class="slide title-slide">
+        <h1>Спасибо за внимание!</h1>
+        <p class="subtitle">Готовы ответить на вопросы</p>
+        <p style="margin-top: 30px; opacity: 0.7; font-size: 14px;">{AUTHORS}</p>
+    </section>
+
+</div>
+
+<!-- NAVIGATION -->
+<div class="slide-counter"><span id="current">1</span> / <span id="total">N</span></div>
+<div class="nav">
+    <button id="prev" onclick="changeSlide(-1)">← Назад</button>
+    <button id="next" onclick="changeSlide(1)">Далее →</button>
+</div>
+
+<script>
+    const slides = document.querySelectorAll('.slide');
+    let index = 0;
+
+    function updateNav() {
+        document.getElementById('current').textContent = index + 1;
+        document.getElementById('total').textContent = slides.length;
+        document.getElementById('prev').disabled = index === 0;
+        document.getElementById('next').disabled = index === slides.length - 1;
+    }
+
+    function showSlide(n) {
+        slides[index].classList.remove('active');
+        index = n;
+        slides[index].classList.add('active');
+        updateNav();
+    }
+
+    function changeSlide(d) {
+        const next = index + d;
+        if (next >= 0 && next < slides.length) showSlide(next);
+    }
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowRight') changeSlide(1);
+        if (e.key === 'ArrowLeft') changeSlide(-1);
+    });
+
+    updateNav();
+</script>
+
+</body>
+</html>
+```
+
+---
+
+## CRITICAL CSS RULES (НЕ НАРУШАТЬ!)
+
+### 1. Размеры шрифтов (СТРОГО)
+```css
+h1 (title slide): 44px max
+h2 (slide titles): 28px
+h3 (card titles): 16-18px
+p, li (body text): 14-16px
+```
+
+### 2. Padding слайдов
+```css
+.slide { padding: 48px 64px 80px; }  /* Desktop */
+.slide { padding: 36px 40px 70px; }  /* Tablet */
+.slide { padding: 24px 20px 60px; }  /* Mobile */
+```
+
+### 3. Карточки — КОМПАКТНЫЕ
+```css
+.card {
+    padding: 14px 16px;      /* НЕ больше! */
+    font-size: 14px;         /* Текст в карточках мельче */
+}
+```
+
+### 4. Сетки — с gap
+```css
+.grid-2 { gap: 16px; }
+.grid-3 { gap: 14px; }
+```
+
+### 5. НЕТ overflow-y: scroll на слайдах
+Контент ДОЛЖЕН помещаться. Если не помещается — сократи текст или разбей на 2 слайда.
+
+---
+
+## Content Rules (MUST FOLLOW)
+
+### Максимум контента на слайд:
+- **Title slide:** заголовок + subtitle + авторы
+- **Content slide:** h2 + максимум 4-5 карточек ИЛИ 1 абзац + список из 5-6 пунктов
+- **Grid slide:** максимум 6 карточек (2x3 или 3x2)
+
+### Размер текста в карточках:
+- Заголовок карточки: 1 строка
+- Текст карточки: 2-3 строки МАКСИМУМ
+
+### НЕ ДЕЛАТЬ:
+❌ Длинные абзацы (более 3 строк)
+❌ Списки более 6 пунктов на слайд
+❌ Карточки с 5+ строками текста
+❌ overflow-y: auto или scroll на слайдах
+❌ font-size меньше 14px для body text
+
+### ДЕЛАТЬ:
+✅ Короткие тезисы (1-2 строки)
+✅ Эмодзи в заголовках карточек для визуального разделения
+✅ Разбивать большой контент на несколько слайдов
+✅ Использовать grid-2 или grid-3 для структурирования
+
+---
+
+## Пример хорошего слайда:
+
+```html
+<section class="slide">
+    <h2>Ключевые принципы</h2>
+    <div class="grid-2">
+        <div class="card">
+            <h3>🎯 Фокус на цели</h3>
+            <p>Каждое действие направлено на результат</p>
+        </div>
+        <div class="card success">
+            <h3>✅ Проверка качества</h3>
+            <p>Регулярный контроль и улучшение</p>
+        </div>
+        <div class="card info">
+            <h3>📊 Анализ данных</h3>
+            <p>Решения на основе фактов</p>
+        </div>
+        <div class="card warning">
+            <h3>⚠️ Управление рисками</h3>
+            <p>Предвидеть и предотвращать</p>
+        </div>
+    </div>
+</section>
+```
+
+---
+
+## ФИНАЛЬНЫЙ ЧЕКЛИСТ ПЕРЕД СОЗДАНИЕМ:
+
+1. ✅ Шрифты НЕ больше указанных размеров
+2. ✅ Padding слайдов по шаблону
+3. ✅ Карточки компактные (14px text, 14-16px padding)
+4. ✅ НЕТ overflow-y на слайдах
+5. ✅ Контент помещается на экран без скролла
+6. ✅ Максимум 6 карточек на слайд
+7. ✅ Текст в карточках ≤ 3 строки

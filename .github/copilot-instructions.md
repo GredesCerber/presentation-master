@@ -1,96 +1,106 @@
-# 🎯 Presentation Master — Системные инструкции
+# Presentation Master — System Instructions
 
-**Версия**: 1.2.0  
-**Обновлено**: Апрель 2026
+**Version**: 1.4.0  
+**Updated**: April 2026
 
 ---
 
-## 📊 Архитектура
+## Architecture
 
 ```
 presentation-master/
-├── presentation-master.agent.md   # Основной агент (uses: skill.md)
-├── presentation-master.skill.md   # Воркфлоу генерации (12 шагов)
-├── install.ps1                    # Установщик
-├── examples/                      # Готовые примеры
+├── presentation-master.agent.md   # Main agent (uses: skill.md)
+├── presentation-master.skill.md   # Generation workflow (12 steps)
+├── install.ps1                    # Installer
+├── examples/                      # Ready examples
 └── .github/
-    ├── AGENTS.md                  # Декларация агентов
-    └── copilot-instructions.md    # Этот файл
+    ├── AGENTS.md                  # Agent declaration
+    └── copilot-instructions.md    # This file
 ```
 
 ---
 
-## 🔄 Воркфлоу
+## Workflow
 
 ```
-Пользователь: "Создай презентацию про [тема], авторы: [имена]"
+User: "Create presentation about [topic], authors: [names]"
      ↓
 presentation-master.agent.md
      ↓
-Загружает: presentation-master.skill.md (через uses:)
+Loads: presentation-master.skill.md (via uses:)
      ↓
-Выбирает: 1 из 7 стилей по теме
+Selects: DEFAULT Academic style (or user-specified)
      ↓
-Использует: create tool для файлов
+Uses: `create` tool for files
      ↓
-Проверяет: Чеклист качества
+Checks: Quality checklist
      ↓
-Результат: 2 HTML файла созданы
+Result: 2 HTML files created
 ```
 
 ---
 
-## 📝 Ключевые файлы
+## Key Files
 
-| Файл | Назначение |
-|------|------------|
-| `presentation-master.skill.md` | 12 шагов генерации + 7 стилей |
-| `presentation-master.agent.md` | Определение агента + uses: директива |
-| `AGENTS.md` | Реестр агентов |
-| `examples/` | Примеры презентаций |
-
----
-
-## 🎯 Правила генерации
-
-- **Слайдов**: 14-22 (3-5 на автора)
-- **Файлов**: 2 (`{Тема}.html` + `Речь_{Тема}.html`)
-- **Стиль по умолчанию**: Academic (зелёный/бирюзовый)
-- **Инструмент создания**: `create` tool (ОБЯЗАТЕЛЬНО!)
-- **Меток авторов**: НЕТ на слайдах
-- **Зависимостей**: НЕТ (всё inline)
+| File | Purpose |
+|------|---------|
+| `presentation-master.skill.md` | 12 generation steps + styles + HTML template |
+| `presentation-master.agent.md` | Agent definition + uses: directive |
+| `examples/` | Presentation examples |
 
 ---
 
-## 🌈 Стили
+## Generation Rules
 
-### По умолчанию: Academic
-Тёмный фон + зелёные/бирюзовые акценты (как в `examples/`)
+- **Slides**: 14-22 (MINIMUM 14, regardless of author count)
+- **Files**: 2 (`{Topic}.html` + `Speech_{Topic}.html`)
+- **Default style**: Academic (blue/teal as in examples/)
+- **Creation tool**: `create` (MANDATORY!)
+- **Author labels**: NO on slides
+- **Dependencies**: NONE (all inline)
 
-### Альтернативные (только по запросу)
-| Триггер | Стиль |
+---
+
+## Styles
+
+### Default: Academic
+Light background + blue primary color (as in `examples/`)
+
+### Alternatives (only on explicit request)
+| Trigger | Style |
 |---------|-------|
-| "Glassmorphism" | Стекло + анимации |
-| "светлый/белый" | Minimal Light |
-| "тёмный минималистичный" | Minimal Dark |
-| "градиент" | Gradient Mesh |
-| "неоморфизм" | Neomorphism |
-| "брутализм" | Brutalist |
-| "корпоративный" | Corporate |
+| "Glassmorphism" | Glass + animations |
+| "light/white" | Minimal Light |
+| "dark minimalist" | Minimal Dark |
+| "gradient" | Gradient Mesh |
+| "neomorphism" | Neomorphism |
+| "brutalist" | Brutalist |
+| "corporate" | Corporate |
 
 ---
 
-## ⚠️ КРИТИЧНО: Создание файлов
+## CRITICAL: File Creation
 
-**Агент ДОЛЖЕН использовать `create` tool!**
+**Agent MUST use `create` tool!**
 
 ```
-❌ НЕПРАВИЛЬНО: Вывести код в чат
-✅ ПРАВИЛЬНО: create tool → {Тема}.html
+❌ WRONG: Output code to chat
+✅ CORRECT: create tool → {Topic}.html
 ```
 
-Если агент только "описывает" код — это баг.
+If agent only "describes" code — it's a bug.
 
 ---
 
-**Статус**: ✅ Production-ready
+## CRITICAL: Slide Count
+
+```
+❌ WRONG: "1 author × 5 slides = 5 slides"
+✅ CORRECT: "1 author = 14+ slides (covers ALL content)"
+```
+
+Minimum is ALWAYS 14 slides, maximum is 22.
+
+---
+
+**Status**: ✅ Production-ready

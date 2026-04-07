@@ -1,94 +1,97 @@
 # Changelog
 
-Все значимые изменения в проекте Presentation Master.
+All notable changes to Presentation Master.
+
+---
+
+## [1.4.0] - 2026-04-07
+
+### ✨ Changed
+
+**Slide count logic fixed**
+- MINIMUM is now ALWAYS 14 slides, regardless of author count
+- 1 author = 14+ slides (covers all content), NOT "1 × 5 = 5"
+- Clear formula: FIXED_SLIDES (4) + CONTENT_SLIDES (10-18)
+
+**Instructions translated to English**
+- All agent/skill instructions now in English for better LLM understanding
+- Output (presentations) still in user's language
+
+**HTML/CSS template improved**
+- Added complete HTML template with proper viewport handling
+- Fixed overflow issues — content fits on screen without scrolling
+- Proper font sizes: h1 = 44px, h2 = 28px, body = 14-16px
+- Compact cards: 14px padding, 14px text
+
+**Documentation consolidated**
+- Fixed merge conflict in README.md
+- Updated CUSTOMIZATION.md with correct slide formula
+- Converted AGENTS.md, copilot-instructions.md to English
+
+### 📝 Updated files
+
+- `presentation-master.skill.md` — new slide count logic, full HTML template
+- `presentation-master.agent.md` — CRITICAL: Slide Count section
+- `.github/AGENTS.md` — English, correct workflow
+- `.github/copilot-instructions.md` — English
+- `CUSTOMIZATION.md` — correct slide formula
+- `README.md` — fixed merge conflict, v1.4.0
 
 ---
 
 ## [1.3.0] - 2026-04-06
 
-### ✨ Изменено
+### ✨ Changed
 
-**Стиль по умолчанию: Academic**
-- Все презентации теперь создаются в стиле Academic (зелёный/бирюзовый) — как в примерах
-- Альтернативные стили применяются ТОЛЬКО если пользователь явно указал в запросе
-- Удалён автоматический выбор стиля по теме
-
-**Примеры:**
-```
-# Academic (по умолчанию)
-Создай презентацию про машинное обучение, авторы: Иван
-
-# С указанием стиля
-Создай презентацию про стартапы в стиле Glassmorphism, авторы: Анна
-```
-
-### 📝 Обновлённые файлы
-
-- `presentation-master.agent.md` — добавлена секция "CRITICAL: Style Selection"
-- `presentation-master.skill.md` — Academic вынесен как DEFAULT STYLE
-- `README.md` — обновлён раздел "Стили дизайна"
-- `CUSTOMIZATION.md` — добавлен раздел "По умолчанию: Academic"
-- `TROUBLESHOOTING.md` — обновлена версия
-- `.github/AGENTS.md` — обновлён воркфлоу
-- `.github/copilot-instructions.md` — Academic как стиль по умолчанию
+**Default style: Academic**
+- All presentations now use Academic style (blue/teal) by default
+- Alternative styles apply ONLY if user explicitly specifies
+- Removed automatic style selection by topic
 
 ---
 
 ## [1.2.0] - 2026-04-06
 
-### 🐛 Исправлено
+### 🐛 Fixed
 
-**Проблема: файлы не создаются**
-- Агент выводил код в чат вместо создания файлов
-- Добавлена явная инструкция "USE THE `create` TOOL"
-- Добавлена секция "CRITICAL: File Creation" в agent.md
+**Problem: files not created**
+- Agent was outputting code to chat instead of creating files
+- Added explicit "USE THE `create` TOOL" instruction
+- Added "CRITICAL: File Creation" section to agent.md
 
-**Проблема: агент не ссылается на скилл**
-- Добавлена директива `uses: presentation-master.skill.md` в frontmatter
-- Агент теперь автоматически загружает скилл
+**Problem: agent doesn't reference skill**
+- Added `uses: presentation-master.skill.md` directive to frontmatter
 
-**Проблема: неправильные инструменты**
-- Исправлено: `tools: [create, view, edit, powershell]` (было `create_file, read`)
+**Problem: wrong tools**
+- Fixed: `tools: [create, view, edit, powershell]`
 
-### ✨ Добавлено
+### ✨ Added
 
-**7 стилей дизайна** (из репозитория punyzxc/html-presentation-skill):
-1. Glassmorphism — стекло + анимированные сферы
-2. Minimal Dark — чистый тёмный
-3. Minimal Light — белый, официальный
-4. Gradient Mesh — динамичные градиенты
-5. Neomorphism — мягкие тени
-6. Brutalist — чёрный/красный, дерзкий
-7. Corporate — светло-синий, деловой
-
-### 📝 Обновлённые файлы
-
-- `presentation-master.agent.md` — ссылка на скилл, правильные инструменты
-- `presentation-master.skill.md` — 7 стилей с полными CSS переменными
-- `README.md` — документация с 7 стилями
-- `TROUBLESHOOTING.md` — решение проблемы "файлы не создаются"
-- `CUSTOMIZATION.md` — все стили с CSS кодом
-- `.github/AGENTS.md` — обновлённая документация
-- `.github/copilot-instructions.md` — системные инструкции
+**7 design styles** (from punyzxc/html-presentation-skill):
+1. Glassmorphism
+2. Minimal Dark
+3. Minimal Light
+4. Gradient Mesh
+5. Neomorphism
+6. Brutalist
+7. Corporate
 
 ---
 
 ## [1.1.0] - 2026-04
 
-### ✨ Первый релиз
+### ✨ First release
 
-- Генерация HTML-презентаций
-- 14-22 слайдов (3-5 на автора)
-- Речевые заметки
-- 3 стиля: Academic, Modern, Professional
-- Автоматический расчёт слайдов
-- Офлайн работа (без зависимостей)
+- HTML presentation generation
+- 14-22 slides
+- Speaker notes
+- 3 styles
+- Offline (no dependencies)
 
 ---
 
-## Легенда
+## Legend
 
-- ✨ Добавлено / Изменено
-- 🐛 Исправлено
-- 📝 Документация
-- ⚠️ Устаревшее
+- ✨ Added / Changed
+- 🐛 Fixed
+- 📝 Documentation

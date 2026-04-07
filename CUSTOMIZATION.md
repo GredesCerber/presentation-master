@@ -146,20 +146,25 @@ body {
 
 ---
 
-## 🔢 Формула расчёта слайдов
+## 🔢 Slide Count Formula
 
-### Текущая формула
+### Current Formula
 
 ```
-Слайдов = Авторы × (3-5) = 14-22 слайда
+MINIMUM: 14 slides (always, regardless of author count)
+MAXIMUM: 22 slides
 
-| Авторы | Min | Target | Max |
-|--------|-----|--------|-----|
-| 1      | 10  | 12-14  | 16  |
-| 2      | 10  | 14-16  | 18  |
-| 3      | 12  | 16-18  | 20  |
-| 4+     | 14  | 18-20  | 22  |
+TOTAL = FIXED_SLIDES (4) + CONTENT_SLIDES (10-18)
+
+| Authors | Min | Target | Max | Content per Author |
+|---------|-----|--------|-----|-------------------|
+| 1       | 14  | 14-16  | 18  | 10-14 slides      |
+| 2       | 14  | 16-18  | 20  | 5-8 slides each   |
+| 3       | 16  | 18-20  | 22  | 4-6 slides each   |
+| 4+      | 18  | 20-22  | 22  | 3-5 slides each   |
 ```
+
+**IMPORTANT:** 1 author ≠ 5 slides. 1 author = 14+ slides (covers ALL content)
 
 ### Как изменить
 
@@ -285,4 +290,4 @@ case 'F':
 
 ---
 
-**Версия**: 1.3.0
+**Version**: 1.4.0

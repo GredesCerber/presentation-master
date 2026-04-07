@@ -10,80 +10,80 @@ description: "Presentation Master System — Agent Declaration"
 
 ---
 
-## 🤖 presentation-master
+## presentation-master
 
 **File**: `presentation-master.agent.md`  
 **Skill**: `presentation-master.skill.md` (linked via `uses:` directive)
 
-**Role**: Генератор HTML-презентаций  
-**User-invocable**: YES (появляется в списке агентов)
+**Role**: HTML presentation generator  
+**User-invocable**: YES (appears in agent list)
 
-**Триггеры**:
-- Пользователь выбирает "presentation-master" в меню
-- Пользователь пишет "создай презентацию", "новая презентация"
+**Triggers**:
+- User selects "presentation-master" in menu
+- User writes "create presentation", "make presentation", "новая презентация"
 
-**Что делает**:
-1. Извлекает тему + авторов из запроса
-2. Автоматически выбирает стиль из 7 палитр по теме
-3. Рассчитывает количество слайдов (3-5 на автора)
-4. **Использует `create` tool** для создания HTML презентации
-5. **Использует `create` tool** для создания HTML с речью
-6. Проверяет качество по чеклисту
-7. Подтверждает завершение
+**What it does**:
+1. Extracts topic + authors from request
+2. Uses DEFAULT Academic style (or user-specified)
+3. Calculates slide count (MINIMUM 14 always)
+4. Uses `create` tool to generate HTML presentation
+5. Uses `create` tool to generate HTML speech notes
+6. Verifies quality checklist
+7. Confirms completion
 
-**Инструменты**: `create`, `view`, `edit`, `powershell`
+**Tools**: `create`, `view`, `edit`, `powershell`
 
-**Результат**: 2 HTML-файла в текущей директории пользователя
+**Output**: 2 HTML files in user's current directory
 
-**Стиль по умолчанию**: Academic (зелёный/бирюзовый) — как в `examples/`
+**Default style**: Academic (blue/teal) — as in `examples/`
 
-**Альтернативные стили** (только если пользователь явно указал):
-| Триггер | Стиль |
+**Alternative styles** (only if user explicitly requests):
+| Trigger | Style |
 |---------|-------|
-| "Glassmorphism" | Стекло + анимации |
-| "светлый" | Minimal Light |
-| "тёмный минималистичный" | Minimal Dark |
-| "градиент" | Gradient Mesh |
-| "неоморфизм" | Neomorphism |
-| "брутализм" | Brutalist |
-| "корпоративный" | Corporate |
+| "Glassmorphism" | Glass + animations |
+| "light/white" | Minimal Light |
+| "dark minimalist" | Minimal Dark |
+| "gradient" | Gradient Mesh |
+| "neomorphism" | Neomorphism |
+| "brutalist" | Brutalist |
+| "corporate" | Corporate |
 
-**Воркфлоу**:
+**Workflow**:
 ```
 START
   ↓
-Читает presentation-master.skill.md (через uses:)
+Reads presentation-master.skill.md (via uses:)
   ↓
-Извлекает: тема, авторы, количество авторов
+Extracts: topic, authors, author count
   ↓
-Проверяет: указан ли стиль? (если нет → Academic)
+Checks: style specified? (if no → Academic)
   ↓
-Рассчитывает: слайды = авторы × (3-5)
+Calculates: slides = MINIMUM 14, up to 22
   ↓
-create tool → {Тема}.html
+create tool → {Topic}.html
   ↓
-create tool → Речь_{Тема}.html
+create tool → Speech_{Topic}.html
   ↓
-Проверка фактов
+Fact-checking
   ↓
-Пост-генерационный чеклист
+Post-generation checklist
   ↓
-ГОТОВО: Оба файла созданы
+DONE: Both files created
 ```
 
-**Критерии успеха**:
-- ✅ 14-22 слайдов сгенерировано
-- ✅ Стиль Academic (или указанный пользователем)
-- ✅ Нет меток авторов на слайдах
-- ✅ Оба файла в рабочей директории
-- ✅ Чеклист пройден
-- ✅ Факты проверены
+**Success criteria**:
+- ✅ 14-22 slides generated
+- ✅ Academic style (or user-specified)
+- ✅ No author labels on slides
+- ✅ Both files in working directory
+- ✅ Checklist passed
+- ✅ Facts verified
 
-**Обработка ошибок**:
-- Если файл уже существует → использовать `edit` или уникальное имя
-- Если чеклист не пройден → Не сохранять файлы → Показать проблемы
+**Error handling**:
+- If file already exists → use `edit` or unique name
+- If checklist fails → Don't save files → Show problems
 
 ---
 
-**Версия**: 1.3.0  
-**Обновлено**: Апрель 2026
+**Version**: 1.4.0  
+**Updated**: April 2026

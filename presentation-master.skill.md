@@ -1939,57 +1939,98 @@ Perfect for: Comparison topics, debates, pros and cons
 
 ### Navigation Styles (Modern)
 
+**CRITICAL LAYOUT RULE: Navigation must NOT overlap content!**
+
+Use bottom-docked navigation (full width at bottom) instead of floating centered:
+
 ```css
-/* Floating navigation container */
+/* CORRECT: Bottom-docked navigation - no content overlap */
+.slides-container {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 80px; /* Space for navigation */
+}
+
 .nav-container {
   position: fixed;
-  bottom: 40px;
-  left: 50%;
-  transform: translateX(-50%);
+  bottom: 0;
+  left: 0;
+  right: 0;
   display: flex;
+  justify-content: center;
   align-items: center;
-  gap: 20px;
-  z-index: 1000;
-  background: rgba(45, 52, 54, 0.8);
+  gap: 16px;
+  background: rgba(26, 26, 46, 0.95);
   backdrop-filter: blur(20px);
-  padding: 15px 30px;
-  border-radius: 50px;
-  border: 2px solid rgba(108, 92, 231, 0.3);
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+  padding: 16px 24px;
+  border-top: 1px solid rgba(108, 92, 231, 0.3);
+  z-index: 1000;
 }
 
-/* Circular nav buttons */
+/* Nav buttons */
 .nav-btn {
-  width: 50px;
-  height: 50px;
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
   border: none;
-  background: linear-gradient(135deg, #6C5CE7, #0984E3);
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
   color: white;
-  font-size: 20px;
   cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  box-shadow: 0 5px 20px rgba(108, 92, 231, 0.4);
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.nav-btn:hover {
-  transform: scale(1.15) rotate(5deg);
+.nav-btn:hover:not(:disabled) {
+  transform: scale(1.1);
+}
+
+.nav-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
 }
 
 /* Dot indicators */
-.indicator-dot {
+.dots {
+  display: flex;
+  gap: 8px;
+}
+
+.dot {
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.3);
-  transition: all 0.4s ease;
+  background: rgba(255, 255, 255, 0.2);
   cursor: pointer;
+  transition: all 0.3s ease;
 }
 
-.indicator-dot.active {
-  background: linear-gradient(135deg, #FDCB6E, #E17055);
-  box-shadow: 0 0 20px rgba(253, 203, 110, 0.6);
+.dot.active {
+  background: var(--accent);
+  box-shadow: 0 0 15px var(--glow);
   transform: scale(1.3);
+}
+
+.slide-counter {
+  color: var(--text-secondary);
+  font-size: 0.95em;
+  min-width: 50px;
+  text-align: center;
+}
+```
+
+**Anti-pattern (DO NOT USE):**
+```css
+/* WRONG: Floating centered navigation - overlaps content! */
+.nav-container {
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 50px;
+  /* This WILL overlap slide content on smaller screens */
 }
 ```
 
@@ -2214,6 +2255,8 @@ After generating, verify BEFORE confirming complete:
 - Incorrect file naming (wrong topic or spelling)
 - Overflow content that's hidden (scrollable is OK, hidden is not)
 - Console errors or broken navigation
+- **Floating centered navigation that overlaps content** (use bottom-docked instead)
+- **No margin-bottom on slides-container** (navigation will cover content)
 
 ❌ **Fact-checking failures:**
 - Make up statistics ("92% of people believe...")

@@ -1,0 +1,1014 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Искусственный интеллект и машинное обучение</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        :root {
+            --primary: #6C5CE7;
+            --secondary: #0984E3;
+            --accent: #FDCB6E;
+            --success: #00B894;
+            --danger: #E17055;
+            --bg-dark: #1a1a2e;
+            --bg-surface: #16213e;
+            --text-primary: #ffffff;
+            --text-secondary: rgba(255,255,255,0.7);
+            --glow: rgba(108, 92, 231, 0.4);
+        }
+        
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background: linear-gradient(135deg, var(--bg-dark) 0%, var(--bg-surface) 50%, #0f0f23 100%);
+            color: var(--text-primary);
+            min-height: 100vh;
+            overflow: hidden;
+        }
+        
+        /* Animated particles */
+        .particles {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            animation: float 15s infinite ease-in-out;
+            opacity: 0;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.6; }
+            90% { opacity: 0.6; }
+            100% { transform: translateY(-100px) rotate(720deg); opacity: 0; }
+        }
+        
+        /* Progress bar */
+        .progress-bar {
+            position: fixed;
+            top: 0; left: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            transition: width 0.3s ease;
+            z-index: 1000;
+            box-shadow: 0 0 10px var(--glow);
+        }
+        
+        .presentation {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .slides-container {
+            flex: 1;
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 80px;
+        }
+        
+        .slide {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            padding: clamp(20px, 4vw, 60px);
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            opacity: 0;
+            transform: scale(0.95) translateY(20px);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .slide.active {
+            display: flex;
+            opacity: 1;
+            transform: scale(1) translateY(0);
+        }
+        
+        /* Title slide */
+        .slide-title {
+            text-align: center;
+            align-items: center;
+            background: radial-gradient(ellipse at center, rgba(108, 92, 231, 0.15) 0%, transparent 70%);
+        }
+        
+        .slide-title h1 {
+            font-size: clamp(2.5em, 6vw, 4.5em);
+            font-weight: 900;
+            margin-bottom: 0.3em;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--danger) 50%, #FD79A8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: titleGlow 3s ease-in-out infinite alternate;
+        }
+        
+        @keyframes titleGlow {
+            0% { filter: drop-shadow(0 0 20px rgba(253, 203, 110, 0.5)); }
+            100% { filter: drop-shadow(0 0 40px rgba(108, 92, 231, 0.8)); }
+        }
+        
+        .slide-title .subtitle {
+            font-size: clamp(1.2em, 2.5vw, 1.8em);
+            color: var(--text-secondary);
+            margin-bottom: 1.5em;
+        }
+        
+        .slide-title .authors {
+            font-size: clamp(1em, 1.8vw, 1.3em);
+            color: var(--secondary);
+        }
+        
+        /* Content slide */
+        .slide-content {
+            background: linear-gradient(180deg, var(--bg-dark) 0%, var(--bg-surface) 100%);
+        }
+        
+        .slide-content h2 {
+            font-size: clamp(1.8em, 3.5vw, 2.5em);
+            color: var(--accent);
+            margin-bottom: 1em;
+            display: flex;
+            align-items: center;
+            gap: 0.5em;
+        }
+        
+        .slide-content h2 .icon {
+            width: 48px; height: 48px;
+            fill: none;
+            stroke: var(--primary);
+            stroke-width: 2;
+        }
+        
+        /* Cards grid */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            max-width: 1200px;
+        }
+        
+        .card {
+            background: rgba(108, 92, 231, 0.1);
+            border: 1px solid rgba(108, 92, 231, 0.3);
+            border-radius: 20px;
+            padding: 28px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        .card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(108, 92, 231, 0.3);
+            border-color: var(--primary);
+        }
+        
+        .card-icon {
+            width: 56px; height: 56px;
+            margin-bottom: 16px;
+            padding: 12px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .card-icon svg {
+            width: 32px; height: 32px;
+            stroke: white;
+            fill: none;
+            stroke-width: 2;
+        }
+        
+        .card h3 {
+            font-size: 1.3em;
+            color: var(--text-primary);
+            margin-bottom: 0.5em;
+        }
+        
+        .card p {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+        
+        /* Comparison cards */
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            max-width: 1000px;
+        }
+        
+        @media (max-width: 768px) {
+            .comparison-grid { grid-template-columns: 1fr; }
+        }
+        
+        .comparison-card {
+            padding: 32px;
+            border-radius: 24px;
+            transition: all 0.4s ease;
+        }
+        
+        .comparison-card.positive {
+            background: linear-gradient(135deg, rgba(0, 184, 148, 0.2), rgba(0, 206, 201, 0.1));
+            border: 2px solid var(--success);
+        }
+        
+        .comparison-card.negative {
+            background: linear-gradient(135deg, rgba(225, 112, 85, 0.2), rgba(253, 121, 168, 0.1));
+            border: 2px solid var(--danger);
+        }
+        
+        .comparison-card h3 {
+            font-size: 1.5em;
+            margin-bottom: 1em;
+            display: flex;
+            align-items: center;
+            gap: 0.5em;
+        }
+        
+        .comparison-card.positive h3 { color: var(--success); }
+        .comparison-card.negative h3 { color: var(--danger); }
+        
+        .comparison-card ul {
+            list-style: none;
+        }
+        
+        .comparison-card li {
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            transition: all 0.3s ease;
+        }
+        
+        .comparison-card li:hover {
+            padding-left: 12px;
+        }
+        
+        .comparison-card li svg {
+            width: 20px; height: 20px;
+            flex-shrink: 0;
+        }
+        
+        .comparison-card.positive li svg { stroke: var(--success); }
+        .comparison-card.negative li svg { stroke: var(--danger); }
+        
+        /* Interactive tabs */
+        .tabs-container {
+            max-width: 900px;
+        }
+        
+        .tabs-header {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+        }
+        
+        .tab-btn {
+            padding: 12px 24px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 30px;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1em;
+        }
+        
+        .tab-btn:hover {
+            background: rgba(108, 92, 231, 0.2);
+            border-color: var(--primary);
+        }
+        
+        .tab-btn.active {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border-color: transparent;
+            box-shadow: 0 4px 20px var(--glow);
+        }
+        
+        .tab-content {
+            display: none;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 16px;
+            padding: 28px;
+            animation: fadeIn 0.4s ease;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Stat counters */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            max-width: 900px;
+        }
+        
+        @media (max-width: 768px) {
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        
+        .stat-item {
+            text-align: center;
+            padding: 24px;
+            background: rgba(255,255,255,0.03);
+            border-radius: 16px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .stat-counter {
+            font-size: 3em;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--accent), var(--danger));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .stat-label {
+            color: var(--text-secondary);
+            margin-top: 8px;
+        }
+        
+        /* Timeline */
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            padding-left: 40px;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 15px;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(180deg, var(--primary), var(--secondary));
+            border-radius: 2px;
+        }
+        
+        .timeline-item {
+            position: relative;
+            padding: 20px 0 20px 30px;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -25px;
+            top: 28px;
+            width: 14px;
+            height: 14px;
+            background: var(--primary);
+            border-radius: 50%;
+            box-shadow: 0 0 20px var(--glow);
+        }
+        
+        .timeline-year {
+            font-size: 0.9em;
+            color: var(--secondary);
+            margin-bottom: 4px;
+        }
+        
+        .timeline-title {
+            font-size: 1.2em;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+        }
+        
+        .timeline-desc {
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+        
+        /* Reveal blocks */
+        .reveal-block {
+            margin: 16px 0;
+        }
+        
+        .reveal-btn {
+            width: 100%;
+            padding: 16px 24px;
+            background: rgba(108, 92, 231, 0.15);
+            border: 1px solid rgba(108, 92, 231, 0.3);
+            border-radius: 12px;
+            color: var(--text-primary);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+            font-size: 1.1em;
+        }
+        
+        .reveal-btn:hover {
+            background: rgba(108, 92, 231, 0.25);
+        }
+        
+        .reveal-btn .arrow {
+            transition: transform 0.3s ease;
+        }
+        
+        .reveal-block.open .reveal-btn .arrow {
+            transform: rotate(180deg);
+        }
+        
+        .reveal-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.4s ease;
+            background: rgba(255,255,255,0.02);
+            border-radius: 0 0 12px 12px;
+        }
+        
+        .reveal-block.open .reveal-content {
+            max-height: 500px;
+            padding: 20px 24px;
+        }
+        
+        /* Navigation */
+        .nav-container {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 16px;
+            background: rgba(26, 26, 46, 0.95);
+            backdrop-filter: blur(20px);
+            padding: 16px 24px;
+            border-top: 1px solid rgba(108, 92, 231, 0.3);
+            z-index: 1000;
+        }
+        
+        .nav-btn {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            border: none;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            font-size: 18px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .nav-btn:hover:not(:disabled) {
+            transform: scale(1.15);
+            box-shadow: 0 5px 20px var(--glow);
+        }
+        
+        .nav-btn:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+        
+        .slide-counter {
+            color: var(--text-secondary);
+            font-size: 0.95em;
+            min-width: 60px;
+            text-align: center;
+        }
+        
+        .dots {
+            display: flex;
+            gap: 8px;
+        }
+        
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.2);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .dot.active {
+            background: linear-gradient(135deg, var(--accent), var(--danger));
+            box-shadow: 0 0 15px rgba(253, 203, 110, 0.5);
+            transform: scale(1.3);
+        }
+        
+        .dot:hover:not(.active) {
+            background: rgba(255,255,255,0.4);
+        }
+        
+        /* Callout */
+        .callout {
+            padding: 20px 24px;
+            border-radius: 12px;
+            margin: 16px 0;
+            display: flex;
+            gap: 16px;
+            align-items: flex-start;
+        }
+        
+        .callout-info {
+            background: rgba(9, 132, 227, 0.15);
+            border-left: 4px solid var(--secondary);
+        }
+        
+        .callout-warning {
+            background: rgba(253, 203, 110, 0.15);
+            border-left: 4px solid var(--accent);
+        }
+        
+        .callout svg {
+            width: 24px;
+            height: 24px;
+            flex-shrink: 0;
+        }
+        
+        .callout-info svg { stroke: var(--secondary); }
+        .callout-warning svg { stroke: var(--accent); }
+        
+        /* Code block */
+        .code-block {
+            background: #0d1117;
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 12px;
+            padding: 20px;
+            font-family: 'Consolas', monospace;
+            font-size: 0.95em;
+            overflow-x: auto;
+        }
+        
+        .code-block .keyword { color: #ff79c6; }
+        .code-block .string { color: #f1fa8c; }
+        .code-block .comment { color: #6272a4; }
+        .code-block .function { color: #50fa7b; }
+    </style>
+</head>
+<body>
+    <!-- Animated particles -->
+    <div class="particles">
+        <div class="particle" style="left: 10%; width: 8px; height: 8px; background: var(--primary); animation-delay: 0s;"></div>
+        <div class="particle" style="left: 20%; width: 6px; height: 6px; background: var(--secondary); animation-delay: 2s;"></div>
+        <div class="particle" style="left: 35%; width: 10px; height: 10px; background: var(--accent); animation-delay: 4s;"></div>
+        <div class="particle" style="left: 50%; width: 7px; height: 7px; background: var(--primary); animation-delay: 1s;"></div>
+        <div class="particle" style="left: 65%; width: 9px; height: 9px; background: var(--danger); animation-delay: 3s;"></div>
+        <div class="particle" style="left: 80%; width: 6px; height: 6px; background: var(--secondary); animation-delay: 5s;"></div>
+        <div class="particle" style="left: 90%; width: 8px; height: 8px; background: var(--success); animation-delay: 2.5s;"></div>
+    </div>
+    
+    <div class="progress-bar" id="progressBar"></div>
+    
+    <div class="presentation">
+        <div class="slides-container">
+            <!-- Slide 1: Title -->
+            <section class="slide slide-title active">
+                <h1>Искусственный интеллект</h1>
+                <p class="subtitle">Машинное обучение и нейронные сети</p>
+                <p class="authors">Иванов И.И., Петров П.П.</p>
+            </section>
+            
+            <!-- Slide 2: What is AI -->
+            <section class="slide slide-content">
+                <h2>
+                    <svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+                    Что такое ИИ?
+                </h2>
+                <div class="cards-grid">
+                    <div class="card">
+                        <div class="card-icon">
+                            <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8z"/><path d="M12 6v6l4 2"/></svg>
+                        </div>
+                        <h3>Определение</h3>
+                        <p>Способность машин имитировать человеческий интеллект и обучаться на данных</p>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon">
+                            <svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+                        </div>
+                        <h3>История</h3>
+                        <p>Термин введён в 1956 году Джоном Маккарти на конференции в Дартмуте</p>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon">
+                            <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                        </div>
+                        <h3>Применение</h3>
+                        <p>Медицина, финансы, транспорт, развлечения, наука и исследования</p>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Slide 3: Types of ML -->
+            <section class="slide slide-content">
+                <h2>
+                    <svg class="icon" viewBox="0 0 24 24"><path d="M18 20V10M12 20V4M6 20v-6"/></svg>
+                    Типы машинного обучения
+                </h2>
+                <div class="tabs-container">
+                    <div class="tabs-header">
+                        <button class="tab-btn active" data-tab="supervised">Supervised</button>
+                        <button class="tab-btn" data-tab="unsupervised">Unsupervised</button>
+                        <button class="tab-btn" data-tab="reinforcement">Reinforcement</button>
+                    </div>
+                    <div class="tab-content active" id="supervised">
+                        <h3 style="color: var(--accent); margin-bottom: 12px;">Обучение с учителем</h3>
+                        <p style="margin-bottom: 16px;">Модель обучается на размеченных данных, где известен правильный ответ.</p>
+                        <div class="callout callout-info">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+                            <span><strong>Примеры:</strong> классификация спама, распознавание изображений, прогнозирование цен</span>
+                        </div>
+                    </div>
+                    <div class="tab-content" id="unsupervised">
+                        <h3 style="color: var(--accent); margin-bottom: 12px;">Обучение без учителя</h3>
+                        <p style="margin-bottom: 16px;">Модель находит скрытые паттерны в неразмеченных данных.</p>
+                        <div class="callout callout-info">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+                            <span><strong>Примеры:</strong> кластеризация клиентов, сжатие данных, обнаружение аномалий</span>
+                        </div>
+                    </div>
+                    <div class="tab-content" id="reinforcement">
+                        <h3 style="color: var(--accent); margin-bottom: 12px;">Обучение с подкреплением</h3>
+                        <p style="margin-bottom: 16px;">Агент учится через взаимодействие со средой, получая награды.</p>
+                        <div class="callout callout-info">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+                            <span><strong>Примеры:</strong> игры (AlphaGo), робототехника, автопилоты</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Slide 4: Statistics -->
+            <section class="slide slide-content">
+                <h2>
+                    <svg class="icon" viewBox="0 0 24 24"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"/><path d="M22 12A10 10 0 0 0 12 2v10z"/></svg>
+                    ИИ в цифрах
+                </h2>
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <div class="stat-counter" data-target="97">0</div>
+                        <div class="stat-label">% компаний используют ИИ</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-counter" data-target="15">0</div>
+                        <div class="stat-label">трлн $ к 2030 году</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-counter" data-target="40">0</div>
+                        <div class="stat-label">% рост рынка ежегодно</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-counter" data-target="85">0</div>
+                        <div class="stat-label">млн рабочих мест к 2025</div>
+                    </div>
+                </div>
+                <div class="callout callout-warning" style="margin-top: 32px; max-width: 900px;">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                    <span>По прогнозам McKinsey, ИИ автоматизирует до 30% рабочих задач к 2030 году</span>
+                </div>
+            </section>
+            
+            <!-- Slide 5: Timeline -->
+            <section class="slide slide-content">
+                <h2>
+                    <svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                    История развития ИИ
+                </h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-year">1956</div>
+                        <div class="timeline-title">Рождение ИИ</div>
+                        <div class="timeline-desc">Дартмутская конференция, термин "искусственный интеллект"</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">1997</div>
+                        <div class="timeline-title">Deep Blue побеждает Каспарова</div>
+                        <div class="timeline-desc">Компьютер IBM впервые обыгрывает чемпиона мира по шахматам</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2012</div>
+                        <div class="timeline-title">Прорыв глубокого обучения</div>
+                        <div class="timeline-desc">AlexNet выигрывает ImageNet, революция нейросетей</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2022</div>
+                        <div class="timeline-title">ChatGPT</div>
+                        <div class="timeline-desc">Генеративный ИИ становится массовым продуктом</div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Slide 6: Pros and Cons -->
+            <section class="slide slide-content">
+                <h2>
+                    <svg class="icon" viewBox="0 0 24 24"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                    Преимущества и риски
+                </h2>
+                <div class="comparison-grid">
+                    <div class="comparison-card positive">
+                        <h3>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                            Преимущества
+                        </h3>
+                        <ul>
+                            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Автоматизация рутинных задач</li>
+                            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Точная диагностика в медицине</li>
+                            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Персонализация услуг</li>
+                            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Научные открытия</li>
+                        </ul>
+                    </div>
+                    <div class="comparison-card negative">
+                        <h3>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+                            Риски
+                        </h3>
+                        <ul>
+                            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> Потеря рабочих мест</li>
+                            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> Проблемы конфиденциальности</li>
+                            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> Алгоритмическая предвзятость</li>
+                            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> Зависимость от технологий</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Slide 7: Neural Networks -->
+            <section class="slide slide-content">
+                <h2>
+                    <svg class="icon" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                    Нейронные сети
+                </h2>
+                <div class="reveal-block">
+                    <button class="reveal-btn">
+                        <span>🧠 Что такое нейронная сеть?</span>
+                        <span class="arrow">▼</span>
+                    </button>
+                    <div class="reveal-content">
+                        <p>Математическая модель, имитирующая работу человеческого мозга. Состоит из слоёв нейронов, связанных между собой.</p>
+                    </div>
+                </div>
+                <div class="reveal-block">
+                    <button class="reveal-btn">
+                        <span>📊 Типы архитектур</span>
+                        <span class="arrow">▼</span>
+                    </button>
+                    <div class="reveal-content">
+                        <p><strong>CNN</strong> — для изображений, <strong>RNN/LSTM</strong> — для последовательностей, <strong>Transformer</strong> — для текста и генерации</p>
+                    </div>
+                </div>
+                <div class="reveal-block">
+                    <button class="reveal-btn">
+                        <span>⚡ Как происходит обучение?</span>
+                        <span class="arrow">▼</span>
+                    </button>
+                    <div class="reveal-content">
+                        <p>Через <strong>обратное распространение ошибки</strong> (backpropagation) — сеть корректирует веса, минимизируя функцию потерь.</p>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Slide 8: Code Example -->
+            <section class="slide slide-content">
+                <h2>
+                    <svg class="icon" viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                    Пример кода: простая модель
+                </h2>
+                <div class="code-block" style="max-width: 800px;">
+                    <span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf<br><br>
+                    <span class="comment"># Создание модели</span><br>
+                    model = tf.keras.Sequential([<br>
+                    &nbsp;&nbsp;tf.keras.layers.<span class="function">Dense</span>(<span class="string">128</span>, activation=<span class="string">'relu'</span>),<br>
+                    &nbsp;&nbsp;tf.keras.layers.<span class="function">Dropout</span>(<span class="string">0.2</span>),<br>
+                    &nbsp;&nbsp;tf.keras.layers.<span class="function">Dense</span>(<span class="string">10</span>, activation=<span class="string">'softmax'</span>)<br>
+                    ])<br><br>
+                    <span class="comment"># Компиляция</span><br>
+                    model.<span class="function">compile</span>(<br>
+                    &nbsp;&nbsp;optimizer=<span class="string">'adam'</span>,<br>
+                    &nbsp;&nbsp;loss=<span class="string">'sparse_categorical_crossentropy'</span>,<br>
+                    &nbsp;&nbsp;metrics=[<span class="string">'accuracy'</span>]<br>
+                    )
+                </div>
+            </section>
+            
+            <!-- Slide 9: Applications -->
+            <section class="slide slide-content">
+                <h2>
+                    <svg class="icon" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                    Области применения
+                </h2>
+                <div class="cards-grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
+                    <div class="card" style="text-align: center;">
+                        <div class="card-icon" style="margin: 0 auto 16px;">
+                            <svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+                        </div>
+                        <h3>Медицина</h3>
+                        <p>Диагностика, анализ снимков</p>
+                    </div>
+                    <div class="card" style="text-align: center;">
+                        <div class="card-icon" style="margin: 0 auto 16px;">
+                            <svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                        </div>
+                        <h3>Финансы</h3>
+                        <p>Трейдинг, риск-анализ</p>
+                    </div>
+                    <div class="card" style="text-align: center;">
+                        <div class="card-icon" style="margin: 0 auto 16px;">
+                            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>
+                        </div>
+                        <h3>Транспорт</h3>
+                        <p>Автопилот, логистика</p>
+                    </div>
+                    <div class="card" style="text-align: center;">
+                        <div class="card-icon" style="margin: 0 auto 16px;">
+                            <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                        </div>
+                        <h3>Коммуникации</h3>
+                        <p>Чат-боты, перевод</p>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Slide 10: Conclusion -->
+            <section class="slide slide-title">
+                <h1>Выводы</h1>
+                <p class="subtitle">ИИ трансформирует мир — важно понимать его возможности и ограничения</p>
+                <div style="margin-top: 2em; display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+                    <div class="card" style="max-width: 280px; text-align: center;">
+                        <h3 style="color: var(--success);">✓ Изучайте</h3>
+                        <p>Понимание ИИ — ключевой навык будущего</p>
+                    </div>
+                    <div class="card" style="max-width: 280px; text-align: center;">
+                        <h3 style="color: var(--accent);">✓ Применяйте</h3>
+                        <p>Используйте ИИ для решения реальных задач</p>
+                    </div>
+                    <div class="card" style="max-width: 280px; text-align: center;">
+                        <h3 style="color: var(--secondary);">✓ Критикуйте</h3>
+                        <p>Оценивайте этические аспекты</p>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Slide 11: Q&A -->
+            <section class="slide slide-title">
+                <h1>Вопросы?</h1>
+                <p class="subtitle">Спасибо за внимание!</p>
+                <p class="authors" style="margin-top: 2em;">Иванов И.И., Петров П.П.</p>
+            </section>
+        </div>
+        
+        <!-- Navigation -->
+        <div class="nav-container">
+            <button class="nav-btn" id="prevBtn" disabled>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+            </button>
+            <div class="dots" id="dots"></div>
+            <span class="slide-counter"><span id="currentSlide">1</span> / <span id="totalSlides">11</span></span>
+            <button class="nav-btn" id="nextBtn">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+            </button>
+        </div>
+    </div>
+    
+    <script>
+        // Slides navigation
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+        let currentSlide = 0;
+        
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const currentSlideEl = document.getElementById('currentSlide');
+        const totalSlidesEl = document.getElementById('totalSlides');
+        const progressBar = document.getElementById('progressBar');
+        const dotsContainer = document.getElementById('dots');
+        
+        // Create dots
+        slides.forEach((_, i) => {
+            const dot = document.createElement('div');
+            dot.className = 'dot' + (i === 0 ? ' active' : '');
+            dot.addEventListener('click', () => goToSlide(i));
+            dotsContainer.appendChild(dot);
+        });
+        
+        const dots = document.querySelectorAll('.dot');
+        
+        function updateSlide() {
+            slides.forEach((slide, i) => {
+                slide.classList.toggle('active', i === currentSlide);
+            });
+            dots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === currentSlide);
+            });
+            
+            currentSlideEl.textContent = currentSlide + 1;
+            progressBar.style.width = ((currentSlide + 1) / totalSlides * 100) + '%';
+            
+            prevBtn.disabled = currentSlide === 0;
+            nextBtn.disabled = currentSlide === totalSlides - 1;
+            
+            // Animate counters when stats slide is shown
+            if (currentSlide === 3) {
+                animateCounters();
+            }
+        }
+        
+        function goToSlide(index) {
+            currentSlide = index;
+            updateSlide();
+        }
+        
+        function nextSlide() {
+            if (currentSlide < totalSlides - 1) {
+                currentSlide++;
+                updateSlide();
+            }
+        }
+        
+        function prevSlide() {
+            if (currentSlide > 0) {
+                currentSlide--;
+                updateSlide();
+            }
+        }
+        
+        prevBtn.addEventListener('click', prevSlide);
+        nextBtn.addEventListener('click', nextSlide);
+        
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight' || e.key === ' ') nextSlide();
+            if (e.key === 'ArrowLeft') prevSlide();
+        });
+        
+        // Tabs functionality
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const tabId = btn.dataset.tab;
+                const container = btn.closest('.tabs-container');
+                
+                container.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+                container.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+                
+                btn.classList.add('active');
+                container.querySelector('#' + tabId).classList.add('active');
+            });
+        });
+        
+        // Reveal blocks
+        document.querySelectorAll('.reveal-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                btn.parentElement.classList.toggle('open');
+            });
+        });
+        
+        // Animated counters
+        function animateCounters() {
+            document.querySelectorAll('.stat-counter').forEach(counter => {
+                const target = parseInt(counter.dataset.target);
+                const duration = 2000;
+                const start = performance.now();
+                
+                function update(currentTime) {
+                    const elapsed = currentTime - start;
+                    const progress = Math.min(elapsed / duration, 1);
+                    const easeOut = 1 - Math.pow(1 - progress, 3);
+                    counter.textContent = Math.floor(target * easeOut);
+                    
+                    if (progress < 1) {
+                        requestAnimationFrame(update);
+                    }
+                }
+                
+                requestAnimationFrame(update);
+            });
+        }
+        
+        // Initialize
+        totalSlidesEl.textContent = totalSlides;
+        updateSlide();
+    </script>
+</body>
+</html>

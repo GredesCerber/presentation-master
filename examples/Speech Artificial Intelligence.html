@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Speech Notes — Artificial Intelligence</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #6366f1;
+            --accent: #06b6d4;
+            --bg: #0f172a;
+            --card: #1e293b;
+            --text: #f1f5f9;
+            --muted: #94a3b8;
+            --border: #334155;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            padding: 40px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .subtitle {
+            color: var(--muted);
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .slide-notes {
+            background: var(--card);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--primary);
+        }
+
+        .slide-number {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white;
+            font-weight: 600;
+            font-size: 0.85rem;
+            padding: 4px 12px;
+            border-radius: 20px;
+            margin-bottom: 0.75rem;
+        }
+
+        .slide-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 1rem;
+        }
+
+        .speech-text {
+            color: var(--muted);
+            font-size: 1rem;
+        }
+
+        .speech-text p {
+            margin-bottom: 0.75rem;
+        }
+
+        .speech-text p:last-child {
+            margin-bottom: 0;
+        }
+
+        .duration {
+            display: inline-block;
+            background: rgba(6, 182, 212, 0.15);
+            color: var(--accent);
+            font-size: 0.8rem;
+            padding: 2px 8px;
+            border-radius: 4px;
+            margin-left: 0.5rem;
+        }
+
+        .key-points {
+            background: rgba(99, 102, 241, 0.1);
+            border-radius: 8px;
+            padding: 1rem;
+            margin-top: 1rem;
+        }
+
+        .key-points h4 {
+            color: var(--primary);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .key-points ul {
+            margin: 0;
+            padding-left: 1.2rem;
+            color: var(--muted);
+            font-size: 0.9rem;
+        }
+
+        .total-time {
+            text-align: center;
+            padding: 1.5rem;
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.2), rgba(6, 182, 212, 0.2));
+            border-radius: 12px;
+            margin-top: 2rem;
+        }
+
+        .total-time span {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent);
+        }
+
+        @media print {
+            body { background: white; color: black; }
+            .slide-notes { border: 1px solid #ddd; background: #f9f9f9; }
+            .speech-text { color: #333; }
+        }
+    </style>
+</head>
+<body>
+    <h1>Speech Notes</h1>
+    <p class="subtitle">Artificial Intelligence — The Future of Technology</p>
+
+    <div class="slide-notes">
+        <span class="slide-number">Slide 1</span>
+        <span class="duration">~30 sec</span>
+        <div class="slide-title">Title Slide</div>
+        <div class="speech-text">
+            <p>Good morning/afternoon everyone. Today I'll be presenting on one of the most transformative technologies of our time — Artificial Intelligence.</p>
+            <p>My name is Alex Johnson, and over the next 20 minutes, we'll explore what AI is, how it works, where it's being used, and what the future holds.</p>
+        </div>
+    </div>
+
+    <div class="slide-notes">
+        <span class="slide-number">Slide 2</span>
+        <span class="duration">~45 sec</span>
+        <div class="slide-title">Presentation Overview</div>
+        <div class="speech-text">
+            <p>Here's what we'll cover today. In Part 1, we'll establish the foundations — defining AI, tracing its history, and understanding different types of AI systems.</p>
+            <p>In Part 2, we'll look at real-world applications, discuss important ethical considerations, and peek into what the future might hold.</p>
+        </div>
+    </div>
+
+    <div class="slide-notes">
+        <span class="slide-number">Slide 3</span>
+        <span class="duration">~1.5 min</span>
+        <div class="slide-title">What is Artificial Intelligence?</div>
+        <div class="speech-text">
+            <p>So what exactly is AI? Marvin Minsky, one of the founding fathers of AI at MIT, defined it as "the science of making machines do things that would require intelligence if done by humans."</p>
+            <p>At its core, AI systems have three key capabilities: Learning — the ability to acquire knowledge from data; Reasoning — drawing logical conclusions; and Problem Solving — finding optimal solutions to complex challenges.</p>
+            <p>Unlike traditional software that follows explicit rules, AI can learn patterns and make decisions based on experience.</p>
+        </div>
+        <div class="key-points">
+            <h4>Key Points</h4>
+            <ul>
+                <li>AI mimics human cognitive functions</li>
+                <li>Three pillars: learning, reasoning, problem-solving</li>
+                <li>Differs from traditional rule-based programming</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="slide-notes">
+        <span class="slide-number">Slide 4</span>
+        <span class="duration">~1.5 min</span>
+        <div class="slide-title">History of AI</div>
+        <div class="speech-text">
+            <p>AI has a fascinating history spanning over 70 years. In 1950, Alan Turing proposed his famous test for machine intelligence — can a machine fool a human into thinking it's human?</p>
+            <p>The term "Artificial Intelligence" was coined at the 1956 Dartmouth Conference. The field had its ups and downs, including "AI winters" when funding dried up.</p>
+            <p>A major milestone came in 1997 when IBM's Deep Blue defeated chess world champion Garry Kasparov. The real breakthrough came in 2012 when deep learning revolutionized image recognition.</p>
+            <p>Since 2022, we've entered the era of generative AI with systems like ChatGPT, Claude, and DALL-E.</p>
+        </div>
+    </div>
+
+    <div class="slide-notes">
+        <span class="slide-number">Slide 5</span>
+        <span class="duration">~1.5 min</span>
+        <div class="slide-title">Types of Artificial Intelligence</div>
+        <div class="speech-text">
+            <p>AI is typically categorized into three types based on capability levels.</p>
+            <p>Narrow AI, or ANI, is what we have today. It excels at specific tasks — like voice assistants, image recognition, or recommendation systems — but can't transfer skills to other domains.</p>
+            <p>General AI, or AGI, would match human-level intelligence across all cognitive tasks. This is what researchers are working toward but haven't achieved yet.</p>
+            <p>Super AI, or ASI, would surpass human intelligence entirely. This remains theoretical and is the subject of much speculation about AI's long-term future.</p>
+        </div>
+    </div>
+
+    <div class="slide-notes">
+        <span class="slide-number">Slide 6</span>
+        <span class="duration">~1 min</span>
+        <div class="slide-title">AI by the Numbers</div>
+        <div class="speech-text">
+            <p>Let me share some impressive statistics. The global AI market is projected to reach $190 billion by 2025.</p>
+            <p>Contrary to fears about job losses, the World Economic Forum predicts AI will create 97 million new jobs while displacing about 85 million — a net positive.</p>
+            <p>About 40% of work tasks could potentially be automated, and 77% of devices we use already incorporate some form of AI.</p>
+            <p>Overall, AI is expected to add $15.7 trillion to the global economy by 2030.</p>
+        </div>
+    </div>
+
+    <div class="slide-notes">
+        <span class="slide-number">Slide 7</span>
+        <span class="duration">~1.5 min</span>
+        <div class="slide-title">Machine Learning Approaches</div>
+        <div class="speech-text">
+            <p>Machine learning is the engine that powers modern AI. There are two main approaches.</p>
+            <p>Supervised learning uses labeled training data — we show the system examples with correct answers, and it learns to predict answers for new data. This is used for classification and regression tasks.</p>
+            <p>Unsupervised learning works with unlabeled data, discovering hidden patterns on its own. It's used for clustering, like grouping customers by behavior, and for detecting anomalies.</p>
+            <p>There's also reinforcement learning, where AI learns through trial and error, receiving rewards or penalties — like how AlphaGo learned to play Go.</p>
+        </div>
+    </div>
+
+    <div class="slide-notes">
+        <span class="slide-number">Slide 8</span>
+        <span class="duration">~1.5 min</span>
+        <div class="slide-title">Real-World Applications</div>
+        <div class="speech-text">
+            <p>AI is transforming virtually every industry. In healthcare, AI assists with disease diagnosis, accelerates drug discovery, creates personalized treatment plans, and analyzes medical images with superhuman accuracy.</p>
+            <p>In transportation, we're seeing autonomous vehicles, smart traffic management, optimized route planning, and predictive maintenance that prevents breakdowns.</p>
+            <p>In finance, AI powers fraud detection systems that protect billions in transactions, algorithmic trading, risk assessment, and customer service chatbots.</p>
+            <p>These are just a few examples — AI is also revolutionizing education, agriculture, manufacturing, and entertainment.</p>
+        </div>
+    </div>
+
+    <div class="slide-notes">
+        <span class="slide-number">Slide 9</span>
+        <span class="duration">~1.5 min</span>
+        <div class="slide-title">How Neural Networks Work</div>
+        <div class="speech-text">
+            <p>Neural networks are inspired by the human brain. They consist of layers of interconnected nodes or "neurons."</p>
+            <p>The input layer receives raw data. Hidden layers — and deep learning uses many of these — process and transform the information. The output layer produces the final result.</p>
+            <p>Training follows a cycle: forward pass to make a prediction, calculate the error, backward pass to determine how to adjust, update the connection weights, and repeat millions of times until the network becomes accurate.</p>
+            <p>This is how systems learn to recognize faces, translate languages, or generate text.</p>
+        </div>
+    </div>
+
+    <div class="slide-notes">
+        <span class="slide-number">Slide 10</span>
+        <span class="duration">~1.5 min</span>
+        <div class="slide-title">Deep Learning Revolution</div>
+        <div class="speech-text">
+            <p>Deep learning has driven the recent AI explosion. Let me highlight four key architectures.</p>
+            <p>CNNs — Convolutional Neural Networks — excel at visual tasks. They power face detection, medical imaging, and self-driving car vision systems.</p>
+            <p>RNNs — Recurrent Neural Networks — handle sequential data like text and speech, enabling translation and voice assistants.</p>
+            <p>Transformers are the architecture behind modern language models like GPT and Claude. They revolutionized natural language processing.</p>
+            <p>GANs — Generative Adversarial Networks — create realistic content by having two networks compete with each other.</p>
+        </div>
+    </div>
+
+    <div class="slide-notes">
+        <span class="slide-number">Slide 11</span>
+        <span class="duration">~1.5 min</span>
+        <div class="slide-title">Ethical Considerations</div>
+        <div class="speech-text">
+            <p>With great power comes great responsibility. AI raises significant ethical challenges.</p>
+            <p>Algorithmic bias can perpetuate discrimination if training data reflects historical biases. Job displacement concerns are real, though often overstated. Privacy risks emerge as AI enables unprecedented surveillance. Deepfakes threaten truth and trust. And many AI systems are "black boxes" — we don't know exactly how they make decisions.</p>
+            <p>Solutions include diverse training data, reskilling programs, data protection laws, detection technologies, and developing explainable AI that can justify its decisions.</p>
+        </div>
+    </div>
+
+    <div class="slide-notes">
+        <span class="slide-number">Slide 12</span>
+        <span class="duration">~1 min</span>
+        <div class="slide-title">The Future of AI</div>
+        <div class="speech-text">
+            <p>What does the future hold? In the next 5 years, expect even more advanced language models, mainstream autonomous vehicles, and AI-powered drug discovery saving lives.</p>
+            <p>By 2030-2040, we may see general-purpose robots, direct brain-computer interfaces, and AI systems conducting independent scientific research.</p>
+            <p>Beyond 2040, some predict the emergence of AGI and profound human-AI collaboration to solve our greatest challenges.</p>
+            <p>As Andrew Ng said, "AI is the new electricity" — it will transform every industry just as electricity did a century ago.</p>
+        </div>
+    </div>
+
+    <div class="slide-notes">
+        <span class="slide-number">Slide 13</span>
+        <span class="duration">~1 min</span>
+        <div class="slide-title">Key Takeaways</div>
+        <div class="speech-text">
+            <p>Let's recap what we've learned. AI systems mimic human cognitive functions through learning, reasoning, and problem-solving. There are three types — Narrow, General, and Super — and we currently have Narrow AI.</p>
+            <p>Machine learning, especially deep learning, powers modern AI systems. Applications span every industry. And ethical considerations require our active attention.</p>
+            <p>My action items for you: learn the basics, identify opportunities in your field, stay informed, consider ethics, and embrace lifelong learning.</p>
+        </div>
+    </div>
+
+    <div class="slide-notes">
+        <span class="slide-number">Slide 14</span>
+        <span class="duration">~30 sec</span>
+        <div class="slide-title">References</div>
+        <div class="speech-text">
+            <p>Here are the key sources I used for this presentation. The textbooks by Russell & Norvig and by Goodfellow et al. are considered definitive references in the field.</p>
+            <p>I've also drawn from recent industry reports by McKinsey and the World Economic Forum, plus technical papers from leading AI organizations.</p>
+        </div>
+    </div>
+
+    <div class="slide-notes">
+        <span class="slide-number">Slide 15</span>
+        <span class="duration">~30 sec</span>
+        <div class="slide-title">Thank You</div>
+        <div class="speech-text">
+            <p>Thank you for your attention. I hope this presentation has given you a clearer understanding of artificial intelligence and its impact on our world.</p>
+            <p>I'm now happy to take your questions. You can also reach me at the email shown on screen.</p>
+        </div>
+    </div>
+
+    <div class="total-time">
+        Total estimated presentation time: <span>~18-20 min</span>
+    </div>
+</body>
+</html>

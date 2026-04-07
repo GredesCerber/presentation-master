@@ -143,7 +143,13 @@ presentation-master/
 ├── presentation-master.agent.md   # Основной агент (uses: skill.md)
 ├── presentation-master.skill.md   # Детальный воркфлоу (12 шагов + 7 стилей)
 ├── install.ps1                    # Установщик
-├── examples/                      # Примеры готовых презентаций
+├── CONCEPT.md                     # Концепция проекта (EN)
+├── examples/                      # 7 примеров разных стилей
+│   ├── README.md                  # Описание примеров
+│   ├── Modern_Design_Showcase.html    # Glassmorphism (Canva-style)
+│   ├── Neon_Dark_Style.html           # Neon/Gaming
+│   ├── Light_Professional_Style.html  # Academic/Corporate
+│   └── ... (ещё 4 примера)
 └── .github/
     ├── copilot-instructions.md    # Системные инструкции
     └── AGENTS.md                  # Декларация агентов
@@ -153,9 +159,9 @@ presentation-master/
 
 ## 🎨 Стили дизайна
 
-### По умолчанию: Academic (зелёный/бирюзовый)
+### По умолчанию: Academic (синий/бирюзовый)
 
-Все презентации создаются в стиле **Academic** — тёмный фон с зелёными/бирюзовыми акцентами. Это проверенный стиль из папки `examples/`.
+Все презентации создаются в стиле **Academic** — тёмный фон с синими/бирюзовыми акцентами. Это проверенный стиль из папки `examples/`.
 
 ### Альтернативные стили (только по запросу)
 
@@ -274,5 +280,5 @@ MIT
 
 ---
 
-**Версия**: 1.4.0  
+**Версия**: 1.5.0  
 **Обновлено**: Апрель 2026

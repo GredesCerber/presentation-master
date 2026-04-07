@@ -1,7 +1,37 @@
 # Presentation Master — System Instructions
 
-**Version**: 1.4.0  
+**Version**: 1.5.0  
 **Updated**: April 2026
+
+---
+
+## Overview
+
+Creates beautiful HTML presentations from topic + authors.
+
+**Output:** 2 files
+- `{Topic}.html` — Interactive slides (14-22 slides)
+- `Speech {Topic}.html` — Speaker notes
+
+---
+
+## Key Rules
+
+### 1. No Scrolling
+Slides must fit on screen. Use `overflow: hidden` and compact design.
+
+### 2. Navigation Layout
+```
+[1/15] ←────────────────────→ [◄] [►]
+  ↑ bottom-left               ↑ bottom-right
+```
+Leave ~80px padding at bottom for nav.
+
+### 3. Study Examples
+`examples/` folder = quality reference. Match that level.
+
+### 4. Use `create` Tool
+Don't output code to chat. Create actual files.
 
 ---
 
@@ -9,97 +39,40 @@
 
 ```
 presentation-master/
-├── presentation-master.agent.md   # Main agent (uses: skill.md)
-├── presentation-master.skill.md   # Generation workflow (12 steps)
-├── install.ps1                    # Installer
-├── examples/                      # Ready examples
-└── .github/
-    ├── AGENTS.md                  # Agent declaration
-    └── copilot-instructions.md    # This file
+├── presentation-master.agent.md   # Agent instructions
+├── presentation-master.skill.md   # Technical guide
+├── examples/                      # Quality reference
+│   ├── Artificial Intelligence.html
+│   ├── Climate Change.html
+│   └── Cybersecurity.html
+└── install.ps1                    # VS Code installer
 ```
+
+---
+
+## Design Principles
+
+| Aspect | Guideline |
+|--------|-----------|
+| Layout | Compact, no scroll, grids preferred |
+| Style | Dark + accent colors (see examples/) |
+| Visuals | Cards, icons, animations |
+| Nav | Counter left, buttons right |
+| Content | One idea per slide, concrete examples |
 
 ---
 
 ## Workflow
 
 ```
-User: "Create presentation about [topic], authors: [names]"
+User request → Extract topic/authors → Plan structure
      ↓
-presentation-master.agent.md
+Create {Topic}.html (slides)
      ↓
-Loads: presentation-master.skill.md (via uses:)
+Create Speech {Topic}.html (notes)
      ↓
-Selects: DEFAULT Academic style (or user-specified)
-     ↓
-Uses: `create` tool for files
-     ↓
-Checks: Quality checklist
-     ↓
-Result: 2 HTML files created
+Verify quality → Done
 ```
-
----
-
-## Key Files
-
-| File | Purpose |
-|------|---------|
-| `presentation-master.skill.md` | 12 generation steps + styles + HTML template |
-| `presentation-master.agent.md` | Agent definition + uses: directive |
-| `examples/` | Presentation examples |
-
----
-
-## Generation Rules
-
-- **Slides**: 14-22 (MINIMUM 14, regardless of author count)
-- **Files**: 2 (`{Topic}.html` + `Speech_{Topic}.html`)
-- **Default style**: Academic (blue/teal as in examples/)
-- **Creation tool**: `create` (MANDATORY!)
-- **Author labels**: NO on slides
-- **Dependencies**: NONE (all inline)
-
----
-
-## Styles
-
-### Default: Academic
-Light background + blue primary color (as in `examples/`)
-
-### Alternatives (only on explicit request)
-| Trigger | Style |
-|---------|-------|
-| "Glassmorphism" | Glass + animations |
-| "light/white" | Minimal Light |
-| "dark minimalist" | Minimal Dark |
-| "gradient" | Gradient Mesh |
-| "neomorphism" | Neomorphism |
-| "brutalist" | Brutalist |
-| "corporate" | Corporate |
-
----
-
-## CRITICAL: File Creation
-
-**Agent MUST use `create` tool!**
-
-```
-❌ WRONG: Output code to chat
-✅ CORRECT: create tool → {Topic}.html
-```
-
-If agent only "describes" code — it's a bug.
-
----
-
-## CRITICAL: Slide Count
-
-```
-❌ WRONG: "1 author × 5 slides = 5 slides"
-✅ CORRECT: "1 author = 14+ slides (covers ALL content)"
-```
-
-Minimum is ALWAYS 14 slides, maximum is 22.
 
 ---
 

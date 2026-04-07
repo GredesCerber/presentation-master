@@ -4,6 +4,41 @@ All notable changes to Presentation Master.
 
 ---
 
+## [1.5.0] - 2026-04-07
+
+### ✨ Added
+
+**Premium examples collection**
+- `Modern_Design_Showcase.html` — Canva-style glassmorphism with mesh gradients
+- `Neon_Dark_Style.html` — Gaming/tech aesthetic with particles and glow effects
+- `Light_Professional_Style.html` — Clean academic/corporate style
+
+**New documentation**
+- `CONCEPT.md` — English file explaining project concept and architecture
+
+### 🐛 Fixed
+
+**Version synchronization**
+- All files now show v1.5.0 consistently
+
+**Style description consistency**
+- Fixed "green/teal" → "blue/teal" across all docs
+
+**File naming in examples**
+- Fixed underscores → spaces in skill.md examples
+- Speech file naming now consistent: `Speech {Topic}.html` or `Речь {Topic}.html`
+
+### 📝 Updated files
+
+- `README.md` — v1.5.0, consistent style description
+- `CUSTOMIZATION.md` — v1.5.0
+- `TROUBLESHOOTING.md` — v1.5.0
+- `.github/AGENTS.md` — v1.5.0
+- `presentation-master.skill.md` — fixed file naming examples
+- `examples/` — 3 new premium templates added
+
+---
+
 ## [1.4.0] - 2026-04-07
 
 ### ✨ Changed

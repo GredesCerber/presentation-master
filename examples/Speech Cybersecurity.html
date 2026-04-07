@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Speech Notes — Cybersecurity</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        :root {
+            --primary: #a855f7;
+            --accent: #22d3ee;
+            --bg: #0a0a0f;
+            --card: #14141e;
+            --text: #f0f0f5;
+            --muted: #9ca3af;
+            --border: rgba(168, 85, 247, 0.3);
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            padding: 40px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .subtitle {
+            color: var(--muted);
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .slide-notes {
+            background: var(--card);
+            border-radius: 10px;
+            padding: 1.25rem;
+            margin-bottom: 1.25rem;
+            border-left: 3px solid var(--primary);
+        }
+
+        .slide-number {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white;
+            font-weight: 600;
+            font-size: 0.8rem;
+            padding: 3px 10px;
+            border-radius: 15px;
+            margin-bottom: 0.5rem;
+        }
+
+        .slide-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 0.75rem;
+        }
+
+        .speech-text {
+            color: var(--muted);
+            font-size: 0.95rem;
+        }
+
+        .speech-text p {
+            margin-bottom: 0.6rem;
+        }
+
+        .duration {
+            display: inline-block;
+            background: rgba(34, 211, 238, 0.15);
+            color: var(--accent);
+            font-size: 0.75rem;
+            padding: 2px 8px;
+            border-radius: 4px;
+            margin-left: 0.5rem;
+        }
+
+        .total-time {
+            text-align: center;
+            padding: 1.25rem;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white;
+            border-radius: 10px;
+            margin-top: 1.5rem;
+        }
+
+        .total-time span {
+            font-size: 1.75rem;
+            font-weight: 700;
+        }
+
+        @media print {
+            body { background: white; color: black; }
+            .slide-notes { background: #f5f5f5; border-color: #666; }
+            .speech-text { color: #333; }
+        }
+    </style>
+</head>
+<body>
+    <h1>Speech Notes</h1>
+    <p class="subtitle">Cybersecurity — Protecting the Digital World</p>
+
+    <div class="slide-notes">
+        <span class="slide-number">Slide 1</span>
+        <span class="duration">~30 sec</span>
+        <div class="slide-title">Title Slide</div>
+        <div class="speech-text">
+            <p>Good morning/afternoon everyone. I'm Michael Chen, and today I'll be talking about cybersecurity — the practice of protecting our digital world from malicious attacks.</p>
+            <p>In the next 15 minutes, we'll explore why this matters and how we can defend ourselves.</p>
+        </div>
+    </div>
+
+    <div class="slide-notes">
+        <span class="slide-number">Slide 2</span>
+        <span class="duration">~40 sec</span>
+        <div class="slide-title">Agenda</div>
+        <div class="speech-text">
+            <p>We'll cover two main areas. First, the fundamentals — what cybersecurity actually is, the common threats we face, and how attacks typically unfold.</p>
+            <p>Then we'll look at protection — defense strategies, best practices you can implement today, and where the field is heading.</p>
+        </div>
+    </div>
+
+    <div class="slide-notes">
+        <span class="slide-number">Slide 3</span>
+        <span class="duration">~1 min</span>
+        <div class="slide-title">What is Cybersecurity?</div>
+        <div class="speech-text">
+            <p>The NIST framework defines cybersecurity as protecting systems, networks, and programs from digital attacks aimed at accessing, changing, or destroying sensitive information.</p>
+            <p>It rests on three pillars: Confidentiality — keeping data from unauthorized access. Integrity — ensuring data hasn't been tampered with. And Availability — keeping systems running when needed.</p>
+            <p>Think of it like a bank vault — you need to keep thieves out, ensure nothing inside gets altered, and make sure legitimate customers can access their valuables.</p>
+        </div>
+    </div>
+
+    <div class="slide-notes">
+        <span class="slide-number">Slide 4</span>
+        <span class="duration">~1.5 min</span>
+        <div class="slide-title">Cyber Threat Landscape</div>
+        <div class="speech-text">
+            <p>Let's talk numbers. The global cost of cybercrime hit 8 trillion dollars in 2023. That's larger than most countries' GDP.</p>
+            <p>There are about 2,200 cyber attacks happening every single day. And here's the scary part — on average, it takes 277 days to detect a breach. That's 9 months of attackers having access to your systems.</p>
+            <p>Perhaps most importantly, 95% of breaches involve human error. Technology alone can't save us — we need awareness and training.</p>
+            <p>Looking at threat levels: ransomware is critical, phishing remains extremely high, and data breaches are a persistent concern.</p>
+        </div>
+    </div>
+
+    <div class="slide-notes">
+        <span class="slide-number">Slide 5</span>
+        <span class="duration">~1 min</span>
+        <div class="slide-title">Common Threat Types</div>
+        <div class="speech-text">
+            <p>Threats fall into three main categories. First, malware — malicious software like viruses, worms, trojans, ransomware, and spyware. These can destroy data, spy on you, or hold your files hostage.</p>
+            <p>Second, social engineering — manipulating humans rather than systems. This includes phishing emails, pretexting, baiting, and tailgating into secure areas.</p>
+            <p>Third, network attacks — DDoS attacks that overwhelm servers, man-in-the-middle attacks that intercept communications, SQL injection, and zero-day exploits that target unknown vulnerabilities.</p>
+        </div>
+    </div>
+
+    <div class="slide-notes">
+        <span class="slide-number">Slide 6</span>
+        <span class="duration">~1.5 min</span>
+        <div class="slide-title">Cyber Attack Lifecycle</div>
+        <div class="speech-text">
+            <p>Understanding how attacks unfold helps us defend against them. There are seven stages.</p>
+            <p>Reconnaissance — gathering information about the target. Weaponization — creating the attack payload. Delivery — getting it to the target, often via email.</p>
+            <p>Exploitation — triggering the vulnerability. Installation — establishing a persistent foothold. Command and Control — setting up remote access. And finally, Actions — stealing data, encrypting files, or whatever the attacker's goal is.</p>
+            <p>The good news? We can interrupt this chain at multiple points.</p>
+        </div>
+    </div>
+
+    <div class="slide-notes">
+        <span class="slide-number">Slide 7</span>
+        <span class="duration">~1 min</span>
+        <div class="slide-title">Defense in Depth</div>
+        <div class="speech-text">
+            <p>Effective security requires layers — what we call "defense in depth."</p>
+            <p>Technical controls include firewalls, intrusion detection systems, encryption, multi-factor authentication, and endpoint protection.</p>
+            <p>But technology alone isn't enough. Administrative controls are equally important — security policies, employee training, incident response plans, regular audits, and proper access management.</p>
+            <p>Think of it like a castle — you don't just have one wall, you have moats, walls, guards, and protocols.</p>
+        </div>
+    </div>
+
+    <div class="slide-notes">
+        <span class="slide-number">Slide 8</span>
+        <span class="duration">~1 min</span>
+        <div class="slide-title">Personal Security Best Practices</div>
+        <div class="speech-text">
+            <p>What can you do today? Four key practices.</p>
+            <p>Strong passwords — use unique, complex passwords for each account. Better yet, use a password manager.</p>
+            <p>Enable MFA — multi-factor authentication adds a second layer even if your password is compromised.</p>
+            <p>Update regularly — patches fix known vulnerabilities. Don't delay them.</p>
+            <p>Be skeptical — if an email seems suspicious, verify before clicking. It's okay to be paranoid.</p>
+        </div>
+    </div>
+
+    <div class="slide-notes">
+        <span class="slide-number">Slide 9</span>
+        <span class="duration">~1.5 min</span>
+        <div class="slide-title">Incident Response Process</div>
+        <div class="speech-text">
+            <p>When — not if — an incident occurs, you need a plan. Six phases.</p>
+            <p>Preparation — have the plan, train the team, set up tools before anything happens.</p>
+            <p>Detection — monitor systems, analyze alerts, identify indicators of compromise.</p>
+            <p>Containment — isolate affected systems to stop the spread, but preserve evidence.</p>
+            <p>Eradication — remove the threat, patch the vulnerabilities that allowed it.</p>
+            <p>Recovery — restore systems, verify they're clean, return to normal operations.</p>
+            <p>And critically, Lessons Learned — document what happened and improve your defenses.</p>
+        </div>
+    </div>
+
+    <div class="slide-notes">
+        <span class="slide-number">Slide 10</span>
+        <span class="duration">~1 min</span>
+        <div class="slide-title">Emerging Trends</div>
+        <div class="speech-text">
+            <p>Where is cybersecurity heading? Four major trends.</p>
+            <p>AI-powered security — using machine learning for automated threat detection, behavioral analytics, and predictive security.</p>
+            <p>Zero Trust Architecture — the principle of "never trust, always verify." No implicit trust based on network location.</p>
+            <p>Quantum-safe cryptography — preparing for the day quantum computers can break current encryption.</p>
+            <p>Cloud security — as we move to the cloud, SASE architecture and DevSecOps integration become critical.</p>
+        </div>
+    </div>
+
+    <div class="slide-notes">
+        <span class="slide-number">Slide 11</span>
+        <span class="duration">~1 min</span>
+        <div class="slide-title">Key Takeaways</div>
+        <div class="speech-text">
+            <p>Let me leave you with the key points. Security is everyone's responsibility, not just the IT department's. Defense in depth is essential — no single solution is enough. The human factor is often the weakest link. And preparation beats reaction every time.</p>
+            <p>Your action items: audit your passwords today, enable MFA everywhere possible, stay informed about new threats, and report anything suspicious.</p>
+        </div>
+    </div>
+
+    <div class="slide-notes">
+        <span class="slide-number">Slide 12</span>
+        <span class="duration">~30 sec</span>
+        <div class="slide-title">References</div>
+        <div class="speech-text">
+            <p>For those who want to dive deeper, I recommend the NIST Cybersecurity Framework and the MITRE ATT&CK framework. The Verizon and IBM annual reports provide excellent industry insights. And OWASP and CIS offer practical security controls.</p>
+        </div>
+    </div>
+
+    <div class="slide-notes">
+        <span class="slide-number">Slide 13</span>
+        <span class="duration">~30 sec</span>
+        <div class="slide-title">Thank You</div>
+        <div class="speech-text">
+            <p>Thank you for your attention. Remember: stay secure, stay vigilant. I'm happy to take any questions you might have.</p>
+        </div>
+    </div>
+
+    <div class="total-time">
+        Total presentation time: <span>~13-15 min</span>
+    </div>
+</body>
+</html>
